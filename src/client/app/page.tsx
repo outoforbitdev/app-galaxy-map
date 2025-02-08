@@ -1,6 +1,6 @@
 "use client";
 
-import GalaxyMap from "@/components/galaxymap";
+import GalaxyMap from "@outoforbitdev/galaxy-map";
 import { Fragment, useEffect, useState } from "react";
 
 export default function Map() {
