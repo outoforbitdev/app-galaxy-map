@@ -3,10 +3,10 @@ port := "1798"
 api_port := "1799"
 
 install:
-    yarn install
-    yarn husky install
-    yarn husky init
-    echo "yarn commitlint --edit \$1 --config ./.linters/config/commitlint.config.js" > .husky/commit-msg
+    npm install
+    npx husky install
+    npx husky init
+    echo "npx commitlint --edit \$1 --config ./.linters/config/commitlint.config.js" > .husky/commit-msg
     echo "just lint" > .husky/pre-commit
 
 run: stop
