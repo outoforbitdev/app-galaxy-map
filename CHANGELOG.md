@@ -1,3 +1,9 @@
+## 1.1.0 (2025-02-13)
+
+### Features
+
+- Add options window to the map
+
 ## [1.0.1](https://github.com/outoforbitdev/app-galaxy-map/compare/v1.0.0...v1.0.1) (2024-11-16)
 
 
