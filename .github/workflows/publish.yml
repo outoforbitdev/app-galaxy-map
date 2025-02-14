@@ -1,0 +1,22 @@
+name: Publish
+permissions: read-all
+on:
+  release:
+    types: [published]
+jobs:
+  publish-aspnet:
+    runs-on: ubuntu-latest
+    name: Publish Image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Publish Image
+        uses: outoforbitdev/action-docker-publish@v3.0.0
+        with:
+          docker-username: ${{ vars.DOCKER_USERNAME }}
+          docker-token: ${{ secrets.DOCKER_TOKEN }}
+          image-name: ${{ vars.IMAGE_NAME }}
+          image-tag: "${{ github.ref_name }}"
+          platforms: "linux/amd64"
