@@ -20,3 +20,4 @@ jobs:
           image-name: ${{ vars.IMAGE_NAME }}
           image-tag: "${{ github.ref_name }}"
           platforms: "linux/amd64"
+          publish-latest: true
