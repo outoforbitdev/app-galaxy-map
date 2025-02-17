@@ -10,8 +10,13 @@ install:
     echo "just lint" > .husky/pre-commit
 
 run: stop
-    docker compose up -d --build
+    docker compose -f .local/docker-compose.yml up -d --build
     open http://localhost:{{port}}
+
+setup-local:
+    cd src/service && dotnet ef migrations script --idempotent --output ../../.local/db/migration.sql
+    docker exec -it app-galaxy-map-db-1 sh /data/db/setup-db.sh
+    rm .local/db/migration.sql
 
 build: clean
     # Build image
@@ -37,4 +42,4 @@ lint:
     docker run -v $(pwd):/app -v $(pwd)/.linters:/polylint/.linters outoforbitdev/polylint:0.1.0
 
 migrate NAME:
-    dotnet ef migrations add {{NAME}}
+    cd src/service && dotnet ef migrations add {{NAME}}
