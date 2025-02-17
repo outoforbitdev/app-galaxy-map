@@ -1,0 +1,16 @@
+Name,Origin,Destination,Focus
+Capital Circuit,Capital Prime,Capital II,5
+Capital Circuit,Capital Prime,Capital III,5
+Capital Circuit,Capital III,Capital II,5
+Trade Lane,Capital Prime,Trade Center,1
+Trade Lane,Trade Center,Blue Trade Center,1
+Trade Lane,Blue Trade Center,Outer Capital,1
+Northern Route,Capital Prime,Mercenaries,1
+Northern Route,Mercenaries,Corporate Capital,1
+Northern Route,Corporate Capital,Corporate Terminal,1
+Central Branch,Trade Center,Forest,1
+Central Branch,Forest,Ocean,1
+Shipwright Pipeline,Trade Center,Shipbuilder Alpha,5
+Nebula Pass,Forest,Matriarch,4
+Backwater Route,Outer Capital,Desert,4
+Backwater Route,Desert,Bug Desert,5
