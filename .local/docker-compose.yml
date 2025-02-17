@@ -2,7 +2,7 @@ name: app-galaxy-map
 
 services:
   app:
-    build: ../src
+    build: .
     depends_on:
       db:
         condition: service_started
