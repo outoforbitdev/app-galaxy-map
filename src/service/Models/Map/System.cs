@@ -10,11 +10,23 @@ public struct System {
     #endregion Properties
     #region Constructors
     public System(Models.System system) {
-        Name = system.Name;
+        if (system.Planets.Count > 0) {
+            Planet primaryPlanet = system.Planets.First();
+            Name = primaryPlanet.Name;
+            Console.WriteLine(primaryPlanet.CurrentGovernment?.Name);
+            Color = GetColorFromEnum(primaryPlanet.CurrentGovernment is not null ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color: MapColor.Gray);
+        }
+        else {
+            Name = system.Name;
+            Color = GetColorFromEnum(MapColor.Gray);
+        }
         X = system.Coordinates.X;
         Y = system.Coordinates.Y;
-        Color = Enum.GetName(typeof(MapColor), MapColor.Gray) ?? "Gray";
         FocusLevel = FocusLevelConverter.convertFormap(system.Focus);
     }
     #endregion Constructors
+    private string GetColorFromEnum(MapColor color) {
+        Console.WriteLine(color);
+        return Enum.GetName(typeof(MapColor), color) ?? "Gray";
+    }
 }
