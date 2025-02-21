@@ -22,18 +22,6 @@ public class GalaxyMapContext : DbContext {
             .WithOne(g => g.ChildGovernment)
             .HasForeignKey(g => g.ChildGovernmentId)
             .IsRequired();
-    //     modelBuilder.Entity<Models.PlanetGovernment>()
-    //         .HasOne(p => p.Government)
-    //         .WithMany()
-    //         .HasForeignKey(p => p.GovernmentId)
-    //         .IsRequired();
-    //     modelBuilder.Entity<Models.PlanetGovernment>()
-    //         .HasNoKey()
-    //         .Property(p => p.Relationship)
-    //             .HasConversion(
-    //                 v => v.ToString(),
-    //                 v => (GovernmentRelationship)Enum.Parse(typeof(GovernmentRelationship), v));
-    //     #endregion PlanetGovernment
     }
 
 }
