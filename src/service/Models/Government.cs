@@ -30,6 +30,7 @@ public class Government {
     }
     public Government GetGalacticGovernment() {
         Government parent = GetParentGovernment();
+        // @TODO(jaymirecki): replace this comparison with an IEquatable comparison
         if (parent.Name == this.Name){
             return parent;
         }
