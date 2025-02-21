@@ -1,0 +1,15 @@
+Planet,Government,Relationship
+Capital Planet,Capital,Member
+Capital Farm,Capital,Member
+Capital Mine,Capital,Member
+Trade Center,Trade Center,Member
+Blue Trade,Trade Center,Member
+Outer Capital,Outer,Member
+Desert,Outer,Member
+Corporate Capital,Corporate,Member
+Corporate Terminal,Corporate,Member
+Ocean,Insurgents,Member
+Forest,Insurgents,Member
+Matriarch,Insurgents,Member
+Mercenaries,Insurgents,Member
+Shipbuilder Alpha,Core,Member

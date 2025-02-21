@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GalaxyMapSiteApi.Models;
@@ -5,6 +6,7 @@ namespace GalaxyMapSiteApi.Models;
 [Table("solar_systems")]
 public class System {
     #region Properties
+    [Key]
     public string Name { get; set; } = "";
     [NotMapped]
     public Coordinates Coordinates { get; set; }
@@ -19,6 +21,7 @@ public class System {
     public string Sector { get; set; } = "";
     public string Region { get; set; } = "";
     public int Focus { get; set; }
+    public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
     #region Constructors
     // public System(string name, Coordinates coordinates) {

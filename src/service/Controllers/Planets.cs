@@ -35,8 +35,14 @@ public class PlanetsController : ControllerBase
     [HttpGet(Name = "GetPlanets")]
     public async Task<ActionResult<IEnumerable<Models.Map.System>>> Get()
     {
-        List<Models.System> systems = await _context.Systems.ToListAsync();
+        List<Models.System> systems = 
+            await _context.Systems
+                .Include(s => s.Planets)
+                    .ThenInclude(p => p.ParentGovernments)
+                        .ThenInclude(p => p.Government)
+                .ToListAsync();
         List<Models.Map.System> data = systems.ConvertAll(s => new Models.Map.System(s));
+        List<Models.Planet> planets = await _context.Planets.ToListAsync();
         // planetList.Sort((a, b) => a.FocusLevel - b.FocusLevel);
         return data;
     }

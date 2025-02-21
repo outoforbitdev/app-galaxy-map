@@ -1,4 +1,4 @@
-app_name := "galaxy-map-site"
+app_name := "app-galaxy-map"
 port := "1798"
 api_port := "1799"
 
@@ -28,12 +28,13 @@ build: clean
     open http://localhost:{{port}}
 
 clean: stop
+    -docker compose -f .local/docker-compose.yml  rm -f
+    -docker rm {{app_name}}
     -docker rmi {{app_name}}
 
 stop:
+    -docker compose -f .local/docker-compose.yml  stop
     -docker stop {{app_name}}
-    -docker rm {{app_name}}
-    -docker compose stop
 
 get-ip:
     echo "http://$(ipconfig getifaddr en0):{{port}}"
