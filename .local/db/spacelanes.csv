@@ -1,16 +1,16 @@
-Name,Origin,Destination,Focus
-Capital Circuit,Capital Prime,Capital II,5
-Capital Circuit,Capital Prime,Capital III,5
-Capital Circuit,Capital III,Capital II,5
-Trade Lane,Capital Prime,Trade Center,1
-Trade Lane,Trade Center,Blue Trade Center,1
-Trade Lane,Blue Trade Center,Outer Capital,1
-Northern Route,Capital Prime,Mercenaries,1
-Northern Route,Mercenaries,Corporate Capital,1
-Northern Route,Corporate Capital,Corporate Terminal,1
-Central Branch,Trade Center,Forest,1
-Central Branch,Forest,Ocean,1
-Shipwright Pipeline,Trade Center,Shipbuilder Alpha,5
-Nebula Pass,Forest,Matriarch,4
-Backwater Route,Outer Capital,Desert,4
-Backwater Route,Desert,Bug Desert,5
+instance_id,name,origin_id,destination_id,focus
+legends_base,Capital Circuit,capital_prime,capital_ii,5
+legends_base,Capital Circuit,capital_prime,capital_iii,5
+legends_base,Capital Circuit,capital_iii,capital_ii,5
+legends_base,Trade Lane,capital_prime,trade_center,1
+legends_base,Trade Lane,trade_center,blue_trade_center,1
+legends_base,Trade Lane,blue_trade_center,outer_capital,1
+legends_base,Northern Route,capital_prime,mercenaries,1
+legends_base,Northern Route,mercenaries,corporate_capital,1
+legends_base,Northern Route,corporate_capital,corporate_terminal,1
+legends_base,Central Branch,trade_center,forest,1
+legends_base,Central Branch,forest,ocean,1
+legends_base,Shipwright Pipeline,trade_center,shipbuilder_alpha,5
+legends_base,Nebula Pass,forest,matriarch,4
+legends_base,Backwater Route,outer_capital,desert,4
+legends_base,Backwater Route,desert,bug_desert,5

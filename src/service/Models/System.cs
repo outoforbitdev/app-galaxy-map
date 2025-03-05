@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GalaxyMapSiteApi.Models;
 
 [Table("solar_systems")]
-public class System {
+public class System: InstanceEntity {
     #region Properties
-    [Key]
     public string Name { get; set; } = "";
     [NotMapped]
     public Coordinates Coordinates { get; set; }
