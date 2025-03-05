@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GalaxyMapSiteApi.Models;
 
 [Table("planet_governments")]
-[PrimaryKey(nameof(PlanetId), nameof(GovernmentId))]
+[PrimaryKey(nameof(InstanceId), nameof(PlanetId), nameof(GovernmentId))]
 public class PlanetGovernment: KeylessInstanceEntity {
     #region Properties
     [ForeignKey("InstanceId, PlanetId")]

@@ -12,5 +12,20 @@ legends_base,Central Branch,trade_center,forest,1
 legends_base,Central Branch,forest,ocean,1
 legends_base,Shipwright Pipeline,trade_center,shipbuilder_alpha,5
 legends_base,Nebula Pass,forest,matriarch,4
-legends_base,Backwater Route,outer_capital,desert,4
-legends_base,Backwater Route,desert,bug_desert,5
+legends_base,,outer_capital,desert,4
+legends_base,,desert,bug_desert,5
+legends_plus,Capital Circuit,capital_prime,capital_ii,5
+legends_plus,Capital Circuit,capital_prime,capital_iii,5
+legends_plus,Capital Circuit,capital_iii,capital_ii,5
+legends_plus,Trade Lane,capital_prime,trade_center,1
+legends_plus,Trade Lane,trade_center,blue_trade_center,1
+legends_plus,Trade Lane,blue_trade_center,outer_capital,1
+legends_plus,Northern Route,capital_prime,mercenaries,1
+legends_plus,Northern Route,mercenaries,corporate_capital,1
+legends_plus,Northern Route,corporate_capital,corporate_terminal,1
+legends_plus,Central Branch,trade_center,forest,1
+legends_plus,Central Branch,forest,ocean,1
+legends_plus,Shipwright Pipeline,trade_center,shipbuilder_alpha,5
+legends_plus,Nebula Pass,forest,matriarch,4
+legends_plus,,outer_capital,desert,4
+legends_plus,,desert,bug_desert,5
