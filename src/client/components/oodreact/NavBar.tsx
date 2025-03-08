@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { getDomProps, IComponentProps } from "./IComponent";
-import { HamburgerMenu, IconSize } from "./icons";
+import { HamburgerMenu, IconSize, X } from "./icons";
 import styles from "./nav.module.css";
 import { NavLink } from "./NavLink";
 
@@ -28,7 +28,7 @@ export function NavBar(props: INavBarProps) {
         onClick={() => toggleResponsive(responsive, setResponsive)}
         className={styles.hamburger}
       >
-        <HamburgerMenu size={IconSize.Large} />
+        {responsive ? <X size={IconSize.Large} /> : <HamburgerMenu size={IconSize.Large} />}
       </NavLink>
     </nav>
   );
