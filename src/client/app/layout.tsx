@@ -39,7 +39,7 @@ export default function RootLayout({
                 Legends
               </NavLink>
               <NavLink
-                to="/map-legends-next"
+                to="/map-legends-plus"
                 className={styles.navbar_dropdown}
               >
                 Legends+
