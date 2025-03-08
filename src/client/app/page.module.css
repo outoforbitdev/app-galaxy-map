@@ -20,9 +20,29 @@
 }
 
 header.header {
-  padding-top: 20px;
-  text-align: center;
+  /* text-align: center; */
   position: sticky;
   top: 0;
+  z-index: 100;
   background-color: var(--neutral-background);
+}
+
+.header h1 {
+  padding: 1rem;
+}
+
+.navbar {
+  background-color: var(--primary-accent-background);
+}
+
+.navbar_item:hover {
+  background-color: var(--primary-accent-background-two);
+}
+
+.navbar_dropdown {
+  background-color: var(--primary-accent-background-two);
+}
+
+.navbar_dropdown:hover {
+  background-color: var(--primary-accent-background);
 }

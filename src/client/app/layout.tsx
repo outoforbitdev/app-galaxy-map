@@ -5,6 +5,7 @@ import "./themes.css";
 import "./globals.css";
 import styles from "./page.module.css";
 import { NavBar, NavLink } from "@/components/oodreact";
+import { NavDropdown } from "@/components/oodreact/NavDropdown";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,15 +33,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header className={styles.header}>
           <h1>Star Wars Galactic Map</h1>
-          <NavBar home="/" homeLabel="Galactic Map">
-            <ul>
-              <li>
-                <NavLink to="/about">About</NavLink>
-              </li>
-              <li>
-                <NavLink to="/resources">Resources</NavLink>
-              </li>
-            </ul>
+          <NavBar home="/" homeLabel="Galactic Map" className={styles.navbar}>
+            <NavDropdown label="Maps" className={styles.navbar_item}>
+              <NavLink to="/map-legends" className={styles.navbar_dropdown}>Legends</NavLink>
+              <NavLink to="/map-legends-next" className={styles.navbar_dropdown}>Legends+</NavLink>
+            </NavDropdown>
+            <NavLink to="/about" className={styles.navbar_item}>About</NavLink>
+            <NavLink to="/resources" className={styles.navbar_item}>Resources</NavLink>
           </NavBar>
         </header>
         <div className={styles.content_row}>
