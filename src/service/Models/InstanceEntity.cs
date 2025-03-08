@@ -7,7 +7,7 @@ namespace GalaxyMapSiteApi.Models;
 [PrimaryKey(nameof(InstanceId), nameof(Id))]
 public abstract class InstanceEntity: KeylessInstanceEntity {
     #region Properties
-    // [Key, Column(Order = 1)]
+    [Key, Column(Order = 1)]
     public required string Id { get; set; }
     #endregion Properties
 }
