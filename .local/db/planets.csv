@@ -1,18 +1,35 @@
-Name,System
-Capital Planet,Capital Prime
-Capital Farm,Capital II
-Capital Mine,Capital III
-Trade Center,Trade Center
-Blue Trade,Blue Trade Center
-Outer Capital,Outer Capital
-Outer Capital II,Outer Capital
-Outer Capital III,Outer Capital
-Desert,Desert
-Bug Desert,Bug Desert
-Corporate Capital,Corporate Capital
-Corporate Terminal,Corporate Terminal
-Ocean,Ocean
-Forest,Forest
-Matriarch,Matriarch
-Mercenaries,Mercenaries
-Shipbuilder Alpha,Shipbuilder Alpha
+instance_id,id,name,system_id
+legends_base,capital_planet,Capital Planet,capital_prime
+legends_base,capital_farm,Capital Farm,capital_ii
+legends_base,capital_mine,Capital Mine,capital_iii
+legends_base,trade_center,Trade Center,trade_center
+legends_base,blue_trade,Blue Trade,blue_trade_center
+legends_base,outer_capital,Outer Capital,outer_capital
+legends_base,outer_capital_ii,Outer Capital II,outer_capital
+legends_base,outer_capital_iii,Outer Capital III,outer_capital
+legends_base,desert,Desert,desert
+legends_base,bug_desert,Bug Desert,bug_desert
+legends_base,corporate_capital,Corporate Capital,corporate_capital
+legends_base,corporate_terminal,Corporate Terminal,corporate_terminal
+legends_base,ocean,Ocean,ocean
+legends_base,forest,Forest,forest
+legends_base,matriarch,Matriarch,matriarch
+legends_base,mercenaries,Mercenaries,mercenaries
+legends_base,shipbuilder_alpha,Shipbuilder Alpha,shipbuilder_alpha
+legends_plus,capital_planet,Capital Planet,capital_prime
+legends_plus,capital_farm,Capital Farm,capital_ii
+legends_plus,capital_mine,Capital Mine,capital_iii
+legends_plus,trade_center,Trade Center,trade_center
+legends_plus,blue_trade,Blue Trade,blue_trade_center
+legends_plus,outer_capital,Outer Capital,outer_capital
+legends_plus,outer_capital_ii,Outer Capital II,outer_capital
+legends_plus,outer_capital_iii,Outer Capital III,outer_capital
+legends_plus,desert,Desert,desert
+legends_plus,bug_desert,Bug Desert,bug_desert
+legends_plus,corporate_capital,Corporate Capital,corporate_capital
+legends_plus,corporate_terminal,Corporate Terminal,corporate_terminal
+legends_plus,ocean,Ocean,ocean
+legends_plus,forest,Forest,forest
+legends_plus,matriarch,Matriarch,matriarch
+legends_plus,mercenaries,Mercenaries,mercenaries
+legends_plus,shipbuilder_alpha,Shipbuilder Alpha,shipbuilder_alpha

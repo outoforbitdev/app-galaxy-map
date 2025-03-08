@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using GalaxyMapSiteApi.Data;
 using GalaxyMapSiteApi.Models.Map;
+using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
 [Table("governments")]
-public class Government {
+public class Government: InstanceEntity {
     #region Properties
-    [Key]
     public string Name { get; set; }
     [NotMapped]
     public MapColor Color { get; set; } = MapColor.Gray;

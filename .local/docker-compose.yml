@@ -12,6 +12,7 @@ services:
       - "1798:3000"
     volumes:
       - ../src:/app/src
+      - ~/.nuget/packages:/root/.nuget/packages
   db:
     image: "postgres:17.0-bookworm"
     environment:

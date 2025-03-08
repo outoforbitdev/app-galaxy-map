@@ -1,15 +1,29 @@
-Planet,Government,Relationship
-Capital Planet,Capital,Member
-Capital Farm,Capital,Member
-Capital Mine,Capital,Member
-Trade Center,Trade Center,Member
-Blue Trade,Trade Center,Member
-Outer Capital,Outer,Member
-Desert,Outer,Member
-Corporate Capital,Corporate,Member
-Corporate Terminal,Corporate,Member
-Ocean,Insurgents,Member
-Forest,Insurgents,Member
-Matriarch,Insurgents,Member
-Mercenaries,Insurgents,Member
-Shipbuilder Alpha,Core,Member
+instance_id,planet_id,government_id,relationship_string
+legends_base,capital_planet,capital,Member
+legends_base,capital_farm,capital,Member
+legends_base,capital_mine,capital,Member
+legends_base,trade_center,trade_center,Member
+legends_base,blue_trade,trade_center,Member
+legends_base,outer_capital,outer,Member
+legends_base,desert,outer,Member
+legends_base,corporate_capital,corporate,Member
+legends_base,corporate_terminal,corporate,Member
+legends_base,ocean,insurgents,Member
+legends_base,forest,insurgents,Member
+legends_base,matriarch,insurgents,Member
+legends_base,mercenaries,insurgents,Member
+legends_base,shipbuilder_alpha,core,Member
+legends_plus,capital_planet,capital,Member
+legends_plus,capital_farm,capital,Member
+legends_plus,capital_mine,capital,Member
+legends_plus,trade_center,trade_center,Member
+legends_plus,blue_trade,trade_center,Member
+legends_plus,outer_capital,outer,Member
+legends_plus,desert,outer,Member
+legends_plus,corporate_capital,corporate,Member
+legends_plus,corporate_terminal,corporate,Member
+legends_plus,ocean,insurgents,Member
+legends_plus,forest,insurgents,Member
+legends_plus,matriarch,insurgents,Member
+legends_plus,mercenaries,insurgents,Member
+legends_plus,shipbuilder_alpha,core,Member

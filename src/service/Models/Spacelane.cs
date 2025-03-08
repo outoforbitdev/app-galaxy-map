@@ -5,14 +5,14 @@ namespace GalaxyMapSiteApi.Models;
 
 [Table("spacelanes")]
 [Keyless]
-public class Spacelane {
+public class Spacelane: KeylessInstanceEntity {
     #region Properties
     public string Name { get; set; }
+    [ForeignKey("InstanceId, OriginId")]
     public virtual System Origin { get; set; } = null!;
-    [ForeignKey(nameof(Origin))]
     public string OriginId { get; set; }
+    [ForeignKey("InstanceId, DestinationId")]
     public virtual System Destination { get; set; } = null!;
-    [ForeignKey(nameof(Destination))]
     public string DestinationId { get; set; }
     public int Focus { get; set; }
     #endregion Properties

@@ -1,3 +1,5 @@
-ChildGovernment,ParentGovernment,Relationship
-Capital,Core,Member
-Trade Center,Core,Member
+instance_id,child_government_id,parent_government_id,relationship_string
+legends_base,capital,core,Member
+legends_base,trade_center,core,Member
+legends_plus,capital,core,Member
+legends_plus,trade_center,core,Member
