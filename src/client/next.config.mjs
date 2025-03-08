@@ -8,7 +8,7 @@ const nextConfig = {
         destination: "/map-legends",
         permanent: false,
       },
-    ]
+    ];
   },
 };
 

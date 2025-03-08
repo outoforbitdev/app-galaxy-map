@@ -35,11 +35,22 @@ export default function RootLayout({
           <h1>Star Wars Galactic Map</h1>
           <NavBar home="/" homeLabel="Galactic Map" className={styles.navbar}>
             <NavDropdown label="Maps" className={styles.navbar_item}>
-              <NavLink to="/map-legends" className={styles.navbar_dropdown}>Legends</NavLink>
-              <NavLink to="/map-legends-next" className={styles.navbar_dropdown}>Legends+</NavLink>
+              <NavLink to="/map-legends" className={styles.navbar_dropdown}>
+                Legends
+              </NavLink>
+              <NavLink
+                to="/map-legends-next"
+                className={styles.navbar_dropdown}
+              >
+                Legends+
+              </NavLink>
             </NavDropdown>
-            <NavLink to="/about" className={styles.navbar_item}>About</NavLink>
-            <NavLink to="/resources" className={styles.navbar_item}>Resources</NavLink>
+            <NavLink to="/about" className={styles.navbar_item}>
+              About
+            </NavLink>
+            <NavLink to="/resources" className={styles.navbar_item}>
+              Resources
+            </NavLink>
           </NavBar>
         </header>
         <div className={styles.content_row}>

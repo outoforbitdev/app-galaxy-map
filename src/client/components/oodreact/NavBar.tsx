@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { getDomProps, IComponentProps } from "./IComponent";
 import { HamburgerMenu, IconSize } from "./icons";
 import styles from "./nav.module.css";
@@ -14,22 +14,29 @@ export interface INavBarProps extends IComponentProps {
 export function NavBar(props: INavBarProps) {
   const [responsive, setResponsive] = useState(false);
   return (
-    <nav {...getDomProps(props, styles.nav, responsive ? styles.responsive : "")}>
+    <nav
+      {...getDomProps(props, styles.nav, responsive ? styles.responsive : "")}
+    >
       {props.home ? (
-        <NavLink to={props.home} className={styles.home}>{props.homeLabel ?? "Home"}</NavLink>
+        <NavLink to={props.home} className={styles.home}>
+          {props.homeLabel ?? "Home"}
+        </NavLink>
       ) : null}
       {props.children}
-      <NavLink 
-        to="#" 
+      <NavLink
+        to="#"
         onClick={() => toggleResponsive(responsive, setResponsive)}
         className={styles.hamburger}
-        >
+      >
         <HamburgerMenu size={IconSize.Large} />
       </NavLink>
     </nav>
   );
 }
 
-function toggleResponsive(responsive: boolean, setResponsive: (responsive: boolean) => void) {
+function toggleResponsive(
+  responsive: boolean,
+  setResponsive: (responsive: boolean) => void,
+) {
   setResponsive(!responsive);
 }
