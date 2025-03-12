@@ -5,7 +5,7 @@ import GalaxyMap from "@outoforbitdev/galaxy-map";
 import { Fragment, useEffect, useState } from "react";
 
 interface IMapPageProps {
-    instanceId: string;
+  instanceId: string;
 }
 
 export default function MapPage(props: IMapPageProps) {

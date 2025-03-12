@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const {searchParams} = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const instanceId = searchParams.get("instanceId");
 
   const data = await fetch(`${process.env.API_URL}/map/${instanceId}`);
