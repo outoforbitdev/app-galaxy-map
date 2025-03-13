@@ -21,29 +21,34 @@ public struct Planet{
 
 [ApiController]
 [Route("[controller]")]
-public class PlanetsController : ControllerBase
+public class MapController : ControllerBase
 {
     private readonly GalaxyMapContext _context;
-    private readonly ILogger<PlanetsController> _logger;
+    private readonly ILogger<MapController> _logger;
 
-    public PlanetsController(ILogger<PlanetsController> logger, GalaxyMapContext context)
+    public MapController(ILogger<MapController> logger, GalaxyMapContext context)
     {
         _logger = logger;
         _context = context;
     }
 
-    [HttpGet(Name = "GetPlanets")]
-    public async Task<ActionResult<IEnumerable<Models.Map.System>>> Get()
+    [HttpGet("{instanceId}")]
+    public async Task<ActionResult<Models.Map.Map>> Get(string instanceId)
     {
         List<Models.System> systems = 
             await _context.Systems
+                .Where(s => s.InstanceId == instanceId)
                 .Include(s => s.Planets)
                     .ThenInclude(p => p.ParentGovernments)
                         .ThenInclude(p => p.Government)
                 .ToListAsync();
-        List<Models.Map.System> data = systems.ConvertAll(s => new Models.Map.System(s));
-        List<Models.Planet> planets = await _context.Planets.ToListAsync();
-        // planetList.Sort((a, b) => a.FocusLevel - b.FocusLevel);
+        List<Models.Spacelane> spacelanes = 
+            await _context.Spacelanes
+                .Where(s => s.InstanceId == instanceId)
+                .Include(spacelane => spacelane.Origin)
+                .Include(spacelane => spacelane.Destination)
+                .ToListAsync();
+        Models.Map.Map data = new Models.Map.Map(systems, spacelanes);
         return data;
     }
 }

@@ -28,7 +28,11 @@ export function NavBar(props: INavBarProps) {
         onClick={() => toggleResponsive(responsive, setResponsive)}
         className={styles.hamburger}
       >
-        {responsive ? <X size={IconSize.Large} /> : <HamburgerMenu size={IconSize.Large} />}
+        {responsive ? (
+          <X size={IconSize.Large} />
+        ) : (
+          <HamburgerMenu size={IconSize.Large} />
+        )}
       </NavLink>
     </nav>
   );
