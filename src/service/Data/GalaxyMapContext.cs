@@ -13,6 +13,7 @@ public class GalaxyMapContext : DbContext {
     }
     public DbSet<Models.System> Systems { get; set;}
     public DbSet<Models.Spacelane> Spacelanes { get; set;}
+    public DbSet<Models.SpacelaneSegment> SpacelaneSegments {get; set;}
     public DbSet<Models.Planet> Planets {get; set; }
     public DbSet<Models.Government> Governments {get; set; }
     public DbSet<Models.GovernmentGovernment> GovernmentGovernments {get; set; }

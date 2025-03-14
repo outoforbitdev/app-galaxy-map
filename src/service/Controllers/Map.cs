@@ -42,9 +42,10 @@ public class MapController : ControllerBase
                     .ThenInclude(p => p.ParentGovernments)
                         .ThenInclude(p => p.Government)
                 .ToListAsync();
-        List<Models.Spacelane> spacelanes = 
-            await _context.Spacelanes
+        List<Models.SpacelaneSegment> spacelanes = 
+            await _context.SpacelaneSegments
                 .Where(s => s.InstanceId == instanceId)
+                .Include(spacelane => spacelane.Spacelane)
                 .Include(spacelane => spacelane.Origin)
                 .Include(spacelane => spacelane.Destination)
                 .ToListAsync();

@@ -6,10 +6,10 @@ legends_base,trade_center,Trade Center,1563,-1859,Trade Center Sector,Core,1
 legends_base,blue_trade_center,Blue Trade Center,1563,-1869,Trade Center Sector,Core,5
 legends_base,outer_capital,Outer Capital,1532,-8351,Outer,Outer,2
 legends_base,desert,Desert,6447,-6798,Backwater,Outer,2
-legends_base,bug_desert,Bug Desert,6375,-6781,Arkanis,Outer,5
+legends_base,bug_desert,Bug Desert,6375,-6781,,,5
 legends_base,corporate_capital,Corporate Capital,7344,5975,Corporate,Outer,5
 legends_base,corporate_terminal,Corporate Terminal,7455,6014,Corporate,Outer,2
-legends_base,ocean,Ocean,9117,3277,Quid,Outer,1
+legends_base,ocean,Ocean,9117,3277,Squid,Outer,1
 legends_base,forest,Forest,4750,125,Bears,Mid,3
 legends_base,matriarch,Matriarch,3531,531,Matriarch Cluster,Inner,2
 legends_base,mercenaries,Mercenaries,3681,2723,Mercenary,Outer,2
@@ -22,10 +22,10 @@ legends_plus,trade_center,Trade Center,1563,-1859,Trade Center Sector,Core,1
 legends_plus,blue_trade_center,Blue Trade Center,1563,-1869,Trade Center Sector,Core,5
 legends_plus,outer_capital,Outer Capital,1532,-8351,Outer,Outer,2
 legends_plus,desert,Desert,6447,-6798,Backwater,Outer,2
-legends_plus,bug_desert,Bug Desert,6375,-6781,Arkanis,Outer,5
+legends_plus,bug_desert,Bug Desert,6375,-6781,,,5
 legends_plus,corporate_capital,Corporate Capital,7344,5975,Corporate,Outer,5
 legends_plus,corporate_terminal,Corporate Terminal,7455,6014,Corporate,Outer,2
-legends_plus,ocean,Ocean,9117,3277,Quid,Outer,1
+legends_plus,ocean,Ocean,9117,3277,Squid,Outer,1
 legends_plus,forest,Forest,4750,125,Bears,Mid,3
 legends_plus,matriarch,Matriarch,3531,531,Matriarch Cluster,Inner,2
 legends_plus,mercenaries,Mercenaries,3681,2723,Mercenary,Outer,2
