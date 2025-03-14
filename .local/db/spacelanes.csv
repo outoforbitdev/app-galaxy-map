@@ -1,31 +1,13 @@
-instance_id,name,origin_id,destination_id,focus
-legends_base,Capital Circuit,capital_prime,capital_ii,5
-legends_base,Capital Circuit,capital_prime,capital_iii,5
-legends_base,Capital Circuit,capital_iii,capital_ii,5
-legends_base,Trade Lane,capital_prime,trade_center,1
-legends_base,Trade Lane,trade_center,blue_trade_center,1
-legends_base,Trade Lane,blue_trade_center,outer_capital,1
-legends_base,Northern Route,capital_prime,mercenaries,1
-legends_base,Northern Route,mercenaries,corporate_capital,1
-legends_base,Northern Route,corporate_capital,corporate_terminal,1
-legends_base,Central Branch,trade_center,forest,1
-legends_base,Central Branch,forest,ocean,1
-legends_base,Shipwright Pipeline,trade_center,shipbuilder_alpha,5
-legends_base,Nebula Pass,forest,matriarch,4
-legends_base,,outer_capital,desert,4
-legends_base,,desert,bug_desert,5
-legends_plus,Capital Circuit,capital_prime,capital_ii,5
-legends_plus,Capital Circuit,capital_prime,capital_iii,5
-legends_plus,Capital Circuit,capital_iii,capital_ii,5
-legends_plus,Trade Lane,capital_prime,trade_center,1
-legends_plus,Trade Lane,trade_center,blue_trade_center,1
-legends_plus,Trade Lane,blue_trade_center,outer_capital,1
-legends_plus,Northern Route,capital_prime,mercenaries,1
-legends_plus,Northern Route,mercenaries,corporate_capital,1
-legends_plus,Northern Route,corporate_capital,corporate_terminal,1
-legends_plus,Central Branch,trade_center,forest,1
-legends_plus,Central Branch,forest,ocean,1
-legends_plus,Shipwright Pipeline,trade_center,shipbuilder_alpha,5
-legends_plus,Nebula Pass,forest,matriarch,4
-legends_plus,,outer_capital,desert,4
-legends_plus,,desert,bug_desert,5
+instance_id,id,name,focus
+legends_base,capital_circuit,Capital Circuit,5
+legends_base,trade_lane,Trade Lane,1
+legends_base,northern_route,Northern Route,1
+legends_base,central_branch,Central Branch,1
+legends_base,shipwright_pipeline,Shipwright Pipeline,5
+legends_base,nebula_pass,Nebula Pass,4
+legends_plus,capital_circuit,Capital Circuit,5
+legends_plus,trade_lane,Trade Lane,1
+legends_plus,northern_route,Northern Route,1
+legends_plus,central_branch,Central Branch,1
+legends_plus,shipwright_pipeline,Shipwright Pipeline,5
+legends_plus,nebula_pass,Nebula Pass,4

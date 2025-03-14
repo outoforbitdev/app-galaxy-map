@@ -1,6 +1,6 @@
 namespace GalaxyMapSiteApi.Models.Map;
 
-public struct Spacelane{
+public struct SpacelaneSegment {
     #region Properties
     public string Name { get; set; }
     public int XOne { get; set; }
@@ -11,14 +11,14 @@ public struct Spacelane{
     public int FocusLevel { get; set; }
     #endregion Properties
     #region Constructors
-    public Spacelane(Models.Spacelane spacelane){
-        Name = spacelane.Name;
+    public SpacelaneSegment (Models.SpacelaneSegment spacelane){
+        Name = spacelane.Spacelane is not null ? spacelane.Spacelane.Name : "";
         XOne = spacelane.Origin.Coordinates.X;
         YOne = spacelane.Origin.Coordinates.Y;
         XTwo = spacelane.Destination.Coordinates.X;
         YTwo = spacelane.Destination.Coordinates.Y;
         Color = Enum.GetName(typeof(MapColor), MapColor.Gray) ?? "Gray";
-        FocusLevel = FocusLevelConverter.convertFormap(spacelane.Focus);
+        FocusLevel = FocusLevelConverter.convertFormap(spacelane.Spacelane is not null ? spacelane.Spacelane.Focus : 5);
     }
     #endregion Constructors
 }

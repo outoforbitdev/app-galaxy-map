@@ -17,8 +17,8 @@ public class System: InstanceEntity {
         get { return Coordinates.Y; }
         set { Coordinates = new Coordinates(){ X = Coordinates.X, Y = value }; }
     }
-    public string Sector { get; set; } = "";
-    public string Region { get; set; } = "";
+    public string? Sector { get; set; }
+    public string? Region { get; set; }
     public int Focus { get; set; }
     public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
