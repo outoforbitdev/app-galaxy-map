@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GalaxyMapSiteApi.Models.Map;
 
 namespace GalaxyMapSiteApi.Models;
 
@@ -19,7 +20,12 @@ public class System: InstanceEntity {
     }
     public string? Sector { get; set; }
     public string? Region { get; set; }
-    public int Focus { get; set; }
+    [NotMapped]
+    public FocusLevel? Focus { get; set; }
+    public string? FocusString {
+        get { return Focus.ToString(); }
+        set { Focus = value is not null ? (FocusLevel)Enum.Parse(typeof(FocusLevel), value) : null; }
+    }
     public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
     #region Constructors

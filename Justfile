@@ -8,10 +8,14 @@ install:
     npx husky init
     echo "npx commitlint --edit \$1 --config ./.linters/config/commitlint.config.js" > .husky/commit-msg
     echo "just lint" > .husky/pre-commit
+    cd src/client && npm install
 
 run: stop
     docker compose -f .local/docker-compose.yml up -d --build
     open http://localhost:{{port}}
+
+restart-node:
+    docker exec -itd app-galaxy-map-app-1  sh ./restart-node.sh
 
 setup-local:
     cd src/service && dotnet ef migrations script --idempotent --output ../../.local/db/migration.sql

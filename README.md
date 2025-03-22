@@ -37,6 +37,7 @@ We use [`just`](https://github.com/casey/just) as our command runner. It's very 
 - `just install`: Install pre-commit hooks
 - `just lint`: Run the linter
 - `just run`: Run the app locally (and automatically open the browser window)
+- `just setup-local`: Run migrations and add test data to the local db
 - `just get-ip`: Get the network url of the local application so that you can view on another device (e.g. mobile)
 You can explore the `Justfile` to see all available commands.
 

@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace GalaxyMapSiteApi.Models.Map;
 
 public struct Map {
@@ -11,4 +13,14 @@ public struct Map {
         Spacelanes = spacelanes.ConvertAll(s => new Models.Map.SpacelaneSegment(s));
     }
     #endregion Constructors
+    #region Static Methods
+    public static string GetFocusLevelFromEnum(FocusLevel? focusLevel) {
+        FocusLevel focusLevelOrDefault = focusLevel ?? FocusLevel.Quaternary;
+        return Enum.GetName(typeof(FocusLevel), focusLevelOrDefault) ?? "Quaternary";
+    }
+    public static string GetColorFromEnum(MapColor? color) {
+        MapColor colorOrDefault = color ?? MapColor.Gray;
+        return Enum.GetName(typeof(MapColor), colorOrDefault) ?? "Gray";
+    }
+    #endregion StaticMethods
 }
