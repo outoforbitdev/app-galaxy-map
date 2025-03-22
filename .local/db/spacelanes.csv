@@ -1,13 +1,13 @@
-instance_id,id,name,focus
-legends_base,capital_circuit,Capital Circuit,5
-legends_base,trade_lane,Trade Lane,1
-legends_base,northern_route,Northern Route,1
-legends_base,central_branch,Central Branch,1
-legends_base,shipwright_pipeline,Shipwright Pipeline,5
-legends_base,nebula_pass,Nebula Pass,4
-legends_plus,capital_circuit,Capital Circuit,5
-legends_plus,trade_lane,Trade Lane,1
-legends_plus,northern_route,Northern Route,1
-legends_plus,central_branch,Central Branch,1
-legends_plus,shipwright_pipeline,Shipwright Pipeline,5
-legends_plus,nebula_pass,Nebula Pass,4
+instance_id,id,name,focus_string
+legends_base,capital_circuit,Capital Circuit,
+legends_base,trade_lane,Trade Lane,Primary
+legends_base,northern_route,Northern Route,Primary
+legends_base,central_branch,Central Branch,Secondary
+legends_base,shipwright_pipeline,Shipwright Pipeline,Quaternary
+legends_base,nebula_pass,Nebula Pass,Tertiary
+legends_plus,capital_circuit,Capital Circuit,
+legends_plus,trade_lane,Trade Lane,Primary
+legends_plus,northern_route,Northern Route,Primary
+legends_plus,central_branch,Central Branch,Secondary
+legends_plus,shipwright_pipeline,Shipwright Pipeline,Quaternary
+legends_plus,nebula_pass,Nebula Pass,Tertiary

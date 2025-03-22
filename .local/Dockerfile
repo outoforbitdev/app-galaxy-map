@@ -3,5 +3,7 @@ WORKDIR /app
 RUN curl --silent --location https://deb.nodesource.com/setup_20.x | bash - \
 && apt-get install -y nodejs
 COPY ./run.sh .
+COPY ./restart-node.sh .
 RUN chmod +x ./run.sh
+RUN chmod +x ./restart-node.sh
 ENTRYPOINT [ "./run.sh" ]

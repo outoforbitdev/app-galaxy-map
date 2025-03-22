@@ -8,7 +8,7 @@ public struct SpacelaneSegment {
     public int XTwo { get; set; }
     public int YTwo { get; set; }
     public string Color { get; set; }
-    public int FocusLevel { get; set; }
+    public string FocusLevel { get; set; }
     #endregion Properties
     #region Constructors
     public SpacelaneSegment (Models.SpacelaneSegment spacelane){
@@ -17,8 +17,8 @@ public struct SpacelaneSegment {
         YOne = spacelane.Origin.Coordinates.Y;
         XTwo = spacelane.Destination.Coordinates.X;
         YTwo = spacelane.Destination.Coordinates.Y;
-        Color = Enum.GetName(typeof(MapColor), MapColor.Gray) ?? "Gray";
-        FocusLevel = FocusLevelConverter.convertFormap(spacelane.Spacelane is not null ? spacelane.Spacelane.Focus : 5);
+        Color = Map.GetColorFromEnum(MapColor.Gray);
+        FocusLevel = Map.GetFocusLevelFromEnum(spacelane.Spacelane is not null ? spacelane.Spacelane.Focus : null);
     }
     #endregion Constructors
 }

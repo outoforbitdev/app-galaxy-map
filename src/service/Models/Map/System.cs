@@ -6,27 +6,22 @@ public struct System {
     public int X { get; set; }
     public int Y { get; set; }
     public string Color { get; set; }
-    public int FocusLevel { get; set; }
+    public string FocusLevel { get; set; }
     #endregion Properties
     #region Constructors
     public System(Models.System system) {
         if (system.Planets.Count > 0) {
             Planet primaryPlanet = system.Planets.First();
             Name = primaryPlanet.Name;
-            Console.WriteLine(primaryPlanet.CurrentGovernment?.Name);
-            Color = GetColorFromEnum(primaryPlanet.CurrentGovernment is not null ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color: MapColor.Gray);
+            Color = Map.GetColorFromEnum(primaryPlanet.CurrentGovernment is not null ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color: MapColor.Gray);
         }
         else {
             Name = system.Name;
-            Color = GetColorFromEnum(MapColor.Gray);
+            Color = Map.GetColorFromEnum(MapColor.Gray);
         }
         X = system.Coordinates.X;
         Y = system.Coordinates.Y;
-        FocusLevel = FocusLevelConverter.convertFormap(system.Focus);
+        FocusLevel = Map.GetFocusLevelFromEnum(system.Focus);
     }
     #endregion Constructors
-    private string GetColorFromEnum(MapColor color) {
-        Console.WriteLine(color);
-        return Enum.GetName(typeof(MapColor), color) ?? "Gray";
-    }
 }

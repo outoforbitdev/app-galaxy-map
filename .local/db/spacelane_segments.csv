@@ -12,8 +12,8 @@ legends_base,central_branch,trade_center,forest
 legends_base,central_branch,forest,ocean
 legends_base,shipwright_pipeline,trade_center,shipbuilder_alpha
 legends_base,nebula_pass,forest,matriarch
-legends_base,NULL,outer_capital,desert
-legends_base,NULL,desert,bug_desert
+legends_base,,outer_capital,desert
+legends_base,,desert,bug_desert
 legends_plus,capital_circuit,capital_prime,capital_ii
 legends_plus,capital_circuit,capital_prime,capital_iii
 legends_plus,capital_circuit,capital_iii,capital_ii
@@ -27,5 +27,5 @@ legends_plus,central_branch,trade_center,forest
 legends_plus,central_branch,forest,ocean
 legends_plus,shipwright_pipeline,trade_center,shipbuilder_alpha
 legends_plus,nebula_pass,forest,matriarch
-legends_plus,NULL,outer_capital,desert
-legends_plus,NULL,desert,bug_desert
+legends_plus,,outer_capital,desert
+legends_plus,,desert,bug_desert
