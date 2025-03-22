@@ -12,7 +12,7 @@ public struct SpacelaneSegment {
     #endregion Properties
     #region Constructors
     public SpacelaneSegment (Models.SpacelaneSegment spacelane){
-        Name = spacelane.Spacelane is not null ? (spacelane.Spacelane.Name ?? "") : "";
+        Name = spacelane.Spacelane is not null ? spacelane.Spacelane.Name : "";
         XOne = spacelane.Origin.Coordinates.X;
         YOne = spacelane.Origin.Coordinates.Y;
         XTwo = spacelane.Destination.Coordinates.X;

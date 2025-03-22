@@ -38,6 +38,8 @@ We use [`just`](https://github.com/casey/just) as our command runner. It's very 
 - `just lint`: Run the linter
 - `just run`: Run the app locally (and automatically open the browser window)
 - `just setup-local`: Run migrations and add test data to the local db
+- `just restart-node`: Restart the node server in the local app
+- `just migrate $NAME`: Create a db migration
 - `just get-ip`: Get the network url of the local application so that you can view on another device (e.g. mobile)
 You can explore the `Justfile` to see all available commands.
 
@@ -50,8 +52,10 @@ You can explore the `Justfile` to see all available commands.
   - Run any available migrations
   - Add local data to the database tables
 
+1. If you need to restart the client app, run `just restart-node`.
+
 ## Creating a migration
 ```
-dotnet ef migrations add $NAME
+just migrate $NAME
 dotnet ef migrations script --idempotent
 ```

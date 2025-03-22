@@ -22,7 +22,6 @@ public struct System {
         X = system.Coordinates.X;
         Y = system.Coordinates.Y;
         FocusLevel = Map.GetFocusLevelFromEnum(system.Focus);
-        Console.WriteLine(FocusLevel);
     }
     #endregion Constructors
 }

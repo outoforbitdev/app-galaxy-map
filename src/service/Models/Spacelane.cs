@@ -7,7 +7,7 @@ namespace GalaxyMapSiteApi.Models;
 [Table("spacelanes")]
 public class Spacelane: InstanceEntity {
     #region Properties
-    public string? Name { get; set; }
+    public string Name { get; set; } = "";
     [NotMapped]
     public FocusLevel? Focus { get; set; } = FocusLevel.Quaternary;
     public string? FocusString {

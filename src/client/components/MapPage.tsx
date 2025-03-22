@@ -37,10 +37,8 @@ export default function MapPage(props: IMapPageProps) {
       inputType: "checkbox",
     },
   ];
-  console.log(planets);
 
   const mapOptions = {
-    hideSpacelaneLabels: true,
     showAllPlanets: true,
     customOptions: customOptions,
   };

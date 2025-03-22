@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace GalaxyMapSiteApi.Models.Map;
 
 public struct Map {
