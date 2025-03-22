@@ -48,3 +48,6 @@ lint:
 
 migrate NAME:
     cd src/service && dotnet ef migrations add {{NAME}}
+
+test:
+    cd src/serviceTests && dotnet test
