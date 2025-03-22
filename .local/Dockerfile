@@ -1,6 +1,7 @@
-FROM mcr.microsoft.com/dotnet/sdk@sha256:483d6f3faa583c93d522c4ca9ee54e08e535cb112dceb252b2fbb7ef94839cc8 
+# dotnet/sdk:9.0.202 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+FROM mcr.microsoft.com/dotnet/sdk@sha256:d7f4691d11f610d9b94bb75517c9e78ac5799447b5b3e82af9e4625d8c8d1d53 AS build-service
 WORKDIR /app
-RUN curl --silent --location https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
 && apt-get install -y nodejs
 COPY ./run.sh .
 COPY ./restart-node.sh .

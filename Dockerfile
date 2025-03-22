@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-service
+# dotnet/sdk:9.0.202 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+FROM mcr.microsoft.com/dotnet/sdk@sha256:d7f4691d11f610d9b94bb75517c9e78ac5799447b5b3e82af9e4625d8c8d1d53 AS build-service
 WORKDIR /app
 
 COPY ./src/service .
@@ -7,10 +8,11 @@ RUN dotnet restore
 WORKDIR /app
 RUN dotnet publish -c release -o /out --no-restore
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-client
+# dotnet/sdk:9.0.202 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+FROM mcr.microsoft.com/dotnet/sdk@sha256:d7f4691d11f610d9b94bb75517c9e78ac5799447b5b3e82af9e4625d8c8d1d53 AS build-client
 WORKDIR /app
 
-RUN curl --silent --location https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
 && apt-get install -y nodejs
 COPY ./src/client/package-lock.json .
 COPY ./src/client/package.json .
@@ -19,12 +21,13 @@ RUN npm install
 COPY ./src/client .
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# dotnet/aspnet:9.0.3 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags
+FROM mcr.microsoft.com/dotnet/aspnet@sha256:4f0ad314f83e6abeb6906e69d0f9c81a0d2ee51d362e035c7d3e6ac5743f5399 AS runtime
 WORKDIR /app
 
 RUN apt-get update -y
 RUN apt-get install curl -y
-RUN curl --silent --location https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
 && apt-get install -y nodejs
 ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
