@@ -22,7 +22,7 @@ updates:
       - "work: obvious"
       - "effort: 1"
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/src" # Location of Dockerfile
+    directory: "/.local" # Location of Dockerfile
     schedule:
       interval: "weekly"
     labels:
