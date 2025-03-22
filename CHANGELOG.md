@@ -1,3 +1,10 @@
+## 1.2.0 (2025-03-22)
+
+### Features
+
+- New nav bar
+- Separate Legends map from Legends+ map
+
 ## 1.1.0 (2025-02-13)
 
 ### Features
