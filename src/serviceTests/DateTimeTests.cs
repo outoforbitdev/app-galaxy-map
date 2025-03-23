@@ -19,14 +19,14 @@ public class DateTimeTests
     public void LongConstructor_Value_IsValid()
     {
         DateTime expected = new DateTime();
-        expected.Value = long.MaxValue;
+        expected.Minutes = long.MaxValue;
         Assert.Equal(expected, new DateTime(long.MaxValue));
     }
     [Fact]
     public void IntConstructor_Value_IsValid()
     {
         DateTime expected = new DateTime();
-        expected.Value = MaximumInt;
+        expected.Minutes = MaximumInt;
         Assert.Equal(expected, new DateTime(MaximumInt));
     }
     #endregion Constructors
@@ -35,9 +35,9 @@ public class DateTimeTests
     public void DateTimeProperty_Set_IsValid()
     {
         DateTime DateTime = new DateTime();
-        Assert.Equal(0, DateTime.Value);
-        DateTime.Value = MaximumInt;
-        Assert.Equal(MaximumInt, DateTime.Value);
+        Assert.Equal(0, DateTime.Minutes);
+        DateTime.Minutes = MaximumInt;
+        Assert.Equal(MaximumInt, DateTime.Minutes);
     }
     #endregion Properties
     #region IEquatable

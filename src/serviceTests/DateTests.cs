@@ -19,7 +19,7 @@ public class DateTests
     public void ValueConstructor_Value_IsValid()
     {
         Date expected = new Date();
-        expected.Value = MaximumInt;
+        expected.Days = MaximumInt;
         Assert.Equal(expected, new Date(MaximumInt));
     }
     #endregion Constructors
@@ -28,9 +28,9 @@ public class DateTests
     public void DateProperty_Set_IsValid()
     {
         Date date = new Date();
-        Assert.Equal(0, date.Value);
-        date.Value = MaximumInt;
-        Assert.Equal(MaximumInt, date.Value);
+        Assert.Equal(0, date.Days);
+        date.Days = MaximumInt;
+        Assert.Equal(MaximumInt, date.Days);
     }
     #endregion Properties
     #region IEquatable
