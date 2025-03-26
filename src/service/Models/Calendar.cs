@@ -156,24 +156,42 @@ public class Calendar: InstanceEntity {
             return $"{dateString} {AfterEpochSuffix}";
         }
         else if (year < 0 && BeforeEpochSuffix is not null) {
-            return $"{dateString} {AfterEpochSuffix}";
+            return $"{dateString} {BeforeEpochSuffix}";
         }
         return dateString;
     }
     private string GetYearString(long year) {
         if (year < 0 && BeforeEpochSuffix is not null){
-            year *= -1;
+            return AddSuffix(year, $"{year *= -1}");
         }
         return AddSuffix(year, year.ToString());
     }
     private string GetYearColonDayString(long year, long day) {
         if (year < 0 && BeforeEpochSuffix is not null){
-            year *= -1;
+        return AddSuffix(year, $"{year * -1}:{day}");
         }
         return AddSuffix(year, $"{year}:{day}");
     }
     private string GetTime(int hour, int minute) {
-        return $"{hour}:{minute}";
+        int hourDigits = 0;
+        int minuteDigits = 0;
+        int hoursPerDay = HoursPerDay;
+        int minutesPerHour = MinutesPerHour;
+        while (hoursPerDay != 0) {
+            hourDigits++;
+            hoursPerDay /= 10;
+        }
+        while (minutesPerHour != 0) {
+            minuteDigits++;
+            minutesPerHour /= 10;
+        }
+        return $"{hour.ToString($"D{hourDigits}")}:{minute.ToString($"D{minuteDigits}")}";
+    }
+    public string GetDateTimeString(Date date, DateFormat dateFormat) {
+        return GetDateTimeString(GetDateTime(date), dateFormat);
+    }
+    public string GetDateTimeString(DateTime dateTime, DateFormat dateFormat) {
+        return $"{GetDateString(dateTime, dateFormat)} {GetTimeString(dateTime)}";
     }
     #endregion GetStrings
     #endregion Methods

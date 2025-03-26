@@ -12,7 +12,7 @@ public class CalendarTests
     private const int MinutesPerHour = 60;
     private static Instance testInstance { get; } = new Instance("id", "name");
     private static Calendar testCalendar { get; } = new Calendar(testInstance, "id", "Test", Epoch, MinutesPerHour, HoursPerDay, DaysPerYear, true, "BE", "AE");
-    private static Calendar testCalendarNoZeroYear { get;} = new Calendar(testInstance, "id", "Test", Epoch, MinutesPerHour, HoursPerDay, DaysPerYear, false, "BE", "AE");
+    private static Calendar testCalendarNoZeroYear { get;} = new Calendar(testInstance, "id", "Test", Epoch, MinutesPerHour, HoursPerDay, DaysPerYear, false);
     private static Date MaxDate { get; }  = new Date(Date.Max);
     private static Date AfterEpochDate { get; } = new Date(Epoch + DaysPerYear + 50);
     private static Date ZeroYearDate { get; } = new Date(Epoch + 50);
@@ -30,6 +30,8 @@ public class CalendarTests
     {
         Date date = testCalendar.GetDate(AfterEpochDateTime);
         Assert.Equal(AfterEpochDate, date);
+        Assert.Equal(testCalendar.GetYear(date), testCalendar.GetYear(AfterEpochDateTime));
+        Assert.Equal(testCalendar.GetDay(date), testCalendar.GetDay(AfterEpochDateTime));
     }
     [Fact]
     public void GetDate_InvalidInput_ThrowsException()
@@ -169,7 +171,63 @@ public class CalendarTests
         Assert.Equal(expected, calendar.GetMinute(dateTime));
     }
     #endregion GetMinute
-    #region GetDateString
-    #endregion GetDateString
     #endregion GetValues
+    #region GetDateString
+    public static IEnumerable<object[]> GetDateStringDateData =>
+        new List<object[]>
+        {
+            new object[]{"1 AE", testCalendar, AfterEpochDate, DateFormat.YearOnly},
+            new object[]{"0 AE", testCalendar, ZeroYearDate, DateFormat.YearOnly},
+            new object[]{"1 BE", testCalendar, BeforeEpochDate, DateFormat.YearOnly},
+            new object[]{"2", testCalendarNoZeroYear, AfterEpochDate, DateFormat.YearOnly},
+            new object[]{"1", testCalendarNoZeroYear, ZeroYearDate, DateFormat.YearOnly},
+            new object[]{"-1", testCalendarNoZeroYear, BeforeEpochDate, DateFormat.YearOnly},
+            new object[]{"1:50 AE", testCalendar, AfterEpochDate, DateFormat.YearColonDay},
+            new object[]{"0:50 AE", testCalendar, ZeroYearDate, DateFormat.YearColonDay},
+            new object[]{"1:168 BE", testCalendar, BeforeEpochDate, DateFormat.YearColonDay},
+            new object[]{"2:50", testCalendarNoZeroYear, AfterEpochDate, DateFormat.YearColonDay},
+            new object[]{"1:50", testCalendarNoZeroYear, ZeroYearDate, DateFormat.YearColonDay},
+            new object[]{"-1:168", testCalendarNoZeroYear, BeforeEpochDate, DateFormat.YearColonDay},
+        };
+    [Theory]
+    [MemberData(nameof(GetDateStringDateData))]
+    public void GetDateString_Date_IsCorrect(string expected, Calendar calendar, Date date, DateFormat format) {
+        Assert.Equal(expected, calendar.GetDateString(date, format));
+    }
+    public static IEnumerable<object[]> GetDateStringDateTimeData =>
+        new List<object[]>
+        {
+            new object[]{"1 AE", testCalendar, AfterEpochDateTime, DateFormat.YearOnly},
+            new object[]{"0 AE", testCalendar, ZeroYearDateTime, DateFormat.YearOnly},
+            new object[]{"1 BE", testCalendar, BeforeEpochDateTime, DateFormat.YearOnly},
+            new object[]{"2", testCalendarNoZeroYear, AfterEpochDateTime, DateFormat.YearOnly},
+            new object[]{"1", testCalendarNoZeroYear, ZeroYearDateTime, DateFormat.YearOnly},
+            new object[]{"-1", testCalendarNoZeroYear, BeforeEpochDateTime, DateFormat.YearOnly},
+            new object[]{"1:50 AE", testCalendar, AfterEpochDateTime, DateFormat.YearColonDay},
+            new object[]{"0:50 AE", testCalendar, ZeroYearDateTime, DateFormat.YearColonDay},
+            new object[]{"1:168 BE", testCalendar, BeforeEpochDateTime, DateFormat.YearColonDay},
+            new object[]{"2:50", testCalendarNoZeroYear, AfterEpochDateTime, DateFormat.YearColonDay},
+            new object[]{"1:50", testCalendarNoZeroYear, ZeroYearDateTime, DateFormat.YearColonDay},
+            new object[]{"-1:168", testCalendarNoZeroYear, BeforeEpochDateTime, DateFormat.YearColonDay},
+        };
+    [Theory]
+    [MemberData(nameof(GetDateStringDateTimeData))]
+    public void GetDateString_DateTime_IsCorrect(string expected, Calendar calendar, DateTime dateTime, DateFormat format) {
+        Assert.Equal(expected, calendar.GetDateString(dateTime, format));
+    }
+    #endregion GetDateString
+    #region GetTimeString
+    public static IEnumerable<object[]> GetTimeStringDateTimeData =>
+        new List<object[]>
+        {
+            new object[]{"04:05", testCalendar, AfterEpochDateTime},
+            new object[]{"04:05", testCalendar, ZeroYearDateTime},
+            new object[]{"04:05", testCalendar, BeforeEpochDateTime},
+        };
+    [Theory]
+    [MemberData(nameof(GetTimeStringDateTimeData))]
+    public void GetTimeString_DateTime_IsCorrect(string expected, Calendar calendar, DateTime dateTime) {
+        Assert.Equal(expected, calendar.GetTimeString(dateTime));
+    }
+    #endregion GetTimeString
 }
