@@ -32,7 +32,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header className={styles.header}>
-          <NavBar home="/" homeLabel="Star Wars Galactic Map" className={styles.navbar}>
+          <NavBar
+            home="/"
+            homeLabel="Star Wars Galactic Map"
+            className={styles.navbar}
+          >
             <NavDropdown label="Maps" className={styles.navbar_item}>
               <NavLink to="/map-legends" className={styles.navbar_dropdown}>
                 Legends
