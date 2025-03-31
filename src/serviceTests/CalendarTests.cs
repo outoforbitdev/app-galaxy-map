@@ -41,7 +41,7 @@ public class CalendarTests
         Date date = calendar.GetDate(dateTime);
         Assert.Equal(expected, date);
         Assert.Equal(testCalendar.GetYear(date), testCalendar.GetYear(dateTime));
-        Assert.Equal(testCalendar.GetDay(date), testCalendar.GetDay(dateTime, true));
+        Assert.Equal(testCalendar.GetDay(date), testCalendar.GetDay(dateTime));
     }
     public static IEnumerable<object[]> GetDateExceptionData =>
         new List<object[]>
@@ -49,7 +49,7 @@ public class CalendarTests
             new object[]{testCalendar, MaxDateTime},
             new object[]{testCalendar, MinDateTime},
             new object[]{testCalendar, new DateTime(((long)Date.Max + 1) * 24 * 60)},
-            new object[]{testCalendar, new DateTime(((long)Date.Min - 1) * 24 * 60)},
+            new object[]{testCalendar, new DateTime(((long)Date.Min) * 24 * 60 - 1)},
         };
     [Theory]
     [MemberData(nameof(GetDateExceptionData))]

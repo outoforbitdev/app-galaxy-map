@@ -161,15 +161,15 @@ public class Calendar: InstanceEntity {
     /// </summary>
     /// <param name="dateTime">DateTime value to retrieve the year from</param>
     /// <returns>Day of year</returns>
-    public long GetDay(DateTime dateTime, bool debug = false) {
-        return GetDayInMinutes(dateTime, debug) / MinutesPerDay - GetYearInDays(dateTime);
+    public long GetDay(DateTime dateTime) {
+        return GetDayInMinutes(dateTime) / MinutesPerDay - GetYearInDays(dateTime);
     }
     /// <summary>
     /// Get the DateTime value of the start of the day represented by the provided DateTime
     /// </summary>
     /// <param name="dateTime">The DateTime to convert</param>
     /// <returns>A long representing the DateTime of the start of the day</returns>
-    private long GetDayInMinutes(DateTime dateTime, bool debug = false) {
+    private long GetDayInMinutes(DateTime dateTime) {
         long day = dateTime.Minutes / MinutesPerDay;
         if (dateTime.Minutes < EpochMinutes && dateTime.Minutes % MinutesPerDay != 0) {
             day--;
