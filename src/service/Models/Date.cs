@@ -3,8 +3,8 @@ namespace GalaxyMapSiteApi.Models;
 public struct Date: IEquatable<Date> {
     #region Properties
     public int Days;
-    public static int Max { get; } = int.MaxValue;
-    public static int Min { get; }  = int.MinValue;
+    public const int Max = int.MaxValue;
+    public const int Min  = int.MinValue;
     #endregion Properties
     #region Constructors
     public Date(): this(0){}
@@ -31,4 +31,7 @@ public struct Date: IEquatable<Date> {
         return !a.Equals(b);
     }
     #endregion IEquatable
+    public override string ToString() {
+        return Days.ToString();
+    }
 }

@@ -3,8 +3,8 @@ namespace GalaxyMapSiteApi.Models;
 public struct DateTime: IEquatable<DateTime> {
     #region Properties
     public long Minutes;
-    public static long Max { get; } = long.MaxValue;
-    public static long Min { get; }  = long.MinValue;
+    public const long Max = 9000000000000000;
+    public const long Min  = -9000000000000000;
     #endregion Properties
     #region Constructors
     public DateTime(): this(0){}
@@ -32,4 +32,7 @@ public struct DateTime: IEquatable<DateTime> {
         return !a.Equals(b);
     }
     #endregion IEquatable
+    public override string ToString() {
+        return Minutes.ToString();
+    }
 }
