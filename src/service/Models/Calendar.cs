@@ -13,6 +13,7 @@ public class Calendar: InstanceEntity {
     #region Properties
     public string Name { get; set; }
     public required int Epoch { get; set; }
+    private long EpochMinutes { get { return Epoch * MinutesPerDay; }}
     public required int MinutesPerHour { get; set; }
     public required int HoursPerDay { get; set; }
     private int MinutesPerDay { get { return MinutesPerHour * HoursPerDay; }}
@@ -59,6 +60,9 @@ public class Calendar: InstanceEntity {
     /// <returns>True if the DateTime was converted, false otherwise</returns>
     public bool TryGetDate(DateTime dateTime, out Date date) {
         long days = dateTime.Minutes / MinutesPerDay;
+        if (dateTime.Minutes < EpochMinutes && dateTime.Minutes % MinutesPerDay != 0) {
+            days--;
+        }
         if (days > (long)Date.Max || days < (long)Date.Min) {
             date = new Date();
             return false;
@@ -123,7 +127,7 @@ public class Calendar: InstanceEntity {
         long days = dateTime.Minutes / MinutesPerDay - Epoch;
         long year = days / DaysPerYear;
         // If the days value is before the epoch, and not the first day of the year, it should be rounded down to the start of the year
-        if (days < 0 && days % DaysPerYear != 0) {
+        if (dateTime.Minutes < EpochMinutes && dateTime.Minutes % (DaysPerYear * MinutesPerDay) != 0) {
             year = year - 1;
         }
         return year;
@@ -157,17 +161,17 @@ public class Calendar: InstanceEntity {
     /// </summary>
     /// <param name="dateTime">DateTime value to retrieve the year from</param>
     /// <returns>Day of year</returns>
-    public long GetDay(DateTime dateTime) {
-        return GetDayInMinutes(dateTime) / MinutesPerDay - GetYearInDays(dateTime);
+    public long GetDay(DateTime dateTime, bool debug = false) {
+        return GetDayInMinutes(dateTime, debug) / MinutesPerDay - GetYearInDays(dateTime);
     }
     /// <summary>
     /// Get the DateTime value of the start of the day represented by the provided DateTime
     /// </summary>
     /// <param name="dateTime">The DateTime to convert</param>
     /// <returns>A long representing the DateTime of the start of the day</returns>
-    private long GetDayInMinutes(DateTime dateTime) {
+    private long GetDayInMinutes(DateTime dateTime, bool debug = false) {
         long day = dateTime.Minutes / MinutesPerDay;
-        if (day < 0 && dateTime.Minutes % MinutesPerDay != 0) {
+        if (dateTime.Minutes < EpochMinutes && dateTime.Minutes % MinutesPerDay != 0) {
             day--;
         }
         return day * MinutesPerDay;

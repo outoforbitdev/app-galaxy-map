@@ -25,18 +25,37 @@ public class CalendarTests
     private static DateTime MinDateTime { get; } = new DateTime(DateTime.Min);
     #endregion Constants
     #region Conversions
-    [Fact]
-    public void GetDate_ValidInput_IsValid()
+    public static IEnumerable<object[]> GetDateValidData =>
+        new List<object[]>
+        {
+            new object[]{testCalendar, AfterEpochDateTime, AfterEpochDate},
+            new object[]{testCalendar, ZeroYearDateTime, ZeroYearDate},
+            new object[]{testCalendar, BeforeEpochDateTime, BeforeEpochDate},
+            new object[]{testCalendar, new DateTime(((long)Date.Max + 1) * 24 * 60 - 1), MaxDate},
+            new object[]{testCalendar, new DateTime(((long)Date.Min) * 24 * 60), MinDate},
+        };
+    [Theory]
+    [MemberData(nameof(GetDateValidData))]
+    public void GetDate_ValidInput_IsValid(Calendar calendar, DateTime dateTime, Date expected)
     {
-        Date date = testCalendar.GetDate(AfterEpochDateTime);
-        Assert.Equal(AfterEpochDate, date);
-        Assert.Equal(testCalendar.GetYear(date), testCalendar.GetYear(AfterEpochDateTime));
-        Assert.Equal(testCalendar.GetDay(date), testCalendar.GetDay(AfterEpochDateTime));
+        Date date = calendar.GetDate(dateTime);
+        Assert.Equal(expected, date);
+        Assert.Equal(testCalendar.GetYear(date), testCalendar.GetYear(dateTime));
+        Assert.Equal(testCalendar.GetDay(date), testCalendar.GetDay(dateTime, true));
     }
-    [Fact]
-    public void GetDate_InvalidInput_ThrowsException()
+    public static IEnumerable<object[]> GetDateExceptionData =>
+        new List<object[]>
+        {
+            new object[]{testCalendar, MaxDateTime},
+            new object[]{testCalendar, MinDateTime},
+            new object[]{testCalendar, new DateTime(((long)Date.Max + 1) * 24 * 60)},
+            new object[]{testCalendar, new DateTime(((long)Date.Min - 1) * 24 * 60)},
+        };
+    [Theory]
+    [MemberData(nameof(GetDateExceptionData))]
+    public void GetDate_InvalidInput_ThrowsException(Calendar calendar, DateTime dateTime)
     {
-        Assert.Throws<Exception>(() => testCalendar.GetDate(MaxDateTime));
+        Assert.Throws<Exception>(() => calendar.GetDate(dateTime));
     }
     [Fact]
     public void TryGetDate_ValidInput_ReturnsTrue()
