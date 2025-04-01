@@ -1,0 +1,37 @@
+name: Test
+on: pull_request
+
+permissions: read-all
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: CSharpier
+        run: |
+          docker build .local --tag local-lint
+          docker run -v ./src:/app/src \
+          -v ~/.nuget/packages:/root/.nuget/packages --name csharpier \
+          local-lint /bin/sh ./lint.sh --check
+      - name: Prettier
+        run: |
+          npx prettier --check --ignore-path src/client/.gitignore src/client/
+      - name:
+        run: |
+          yamllint -c .yamllint.yml .github/
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build
+        run: docker build --platform linux/amd64 .
