@@ -44,7 +44,8 @@ get-ip:
     echo "http://$(ipconfig getifaddr en0):{{port}}"
 
 lint:
-    docker run -v $(pwd):/app -v $(pwd)/.linters:/polylint/.linters outoforbitdev/polylint:0.1.0
+    npx prettier --check --ignore-path src/client/.gitignore src/client/
+    yamllint -c .yamllint.yml .github/
 
 lint-write:
     docker build .local --tag local-lint
@@ -54,6 +55,8 @@ lint-write:
         -v ~/.nuget/packages:/root/.nuget/packages \
         --name csharpier \
         local-lint /bin/sh ./lint.sh
+    npx prettier --write .
+    yamllint -c .yamllint.yml ./
 
 migrate NAME:
     cd src/service && dotnet ef migrations add {{NAME}}
