@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-public abstract class KeylessInstanceEntity {
+public abstract class KeylessInstanceEntity
+{
     #region Properties
     [ForeignKey(nameof(InstanceId))]
     [Key, Column(Order = 0)]

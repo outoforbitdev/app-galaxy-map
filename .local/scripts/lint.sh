@@ -2,3 +2,4 @@
 
 cd /app/src && dotnet tool install --create-manifest-if-needed csharpier
 dotnet csharpier $1 .
+exit $?

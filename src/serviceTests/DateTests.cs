@@ -15,6 +15,7 @@ public class DateTests
         Date expected = new Date(0);
         Assert.Equal(expected, new Date());
     }
+
     [Fact]
     public void ValueConstructor_Value_IsValid()
     {
@@ -39,16 +40,19 @@ public class DateTests
     {
         Assert.True(new Date(MaximumInt) == new Date(MaximumInt));
     }
+
     [Fact]
     public void IEquatable_DifferentValue_ReturnFalse()
     {
         Assert.False(new Date(MaximumInt) == new Date(MinimumInt));
     }
+
     [Fact]
     public void IEquatable_NullValue_ReturnFalse()
     {
         Assert.False(new Date(MaximumInt).Equals(null));
     }
+
     [Fact]
     public void IEquatable_NonDate_ReturnFalse()
     {

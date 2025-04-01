@@ -15,6 +15,7 @@ public class DateTimeTests
         DateTime expected = new DateTime(0);
         Assert.Equal(expected, new DateTime());
     }
+
     [Fact]
     public void LongConstructor_Value_IsValid()
     {
@@ -22,6 +23,7 @@ public class DateTimeTests
         expected.Minutes = long.MaxValue;
         Assert.Equal(expected, new DateTime(long.MaxValue));
     }
+
     [Fact]
     public void IntConstructor_Value_IsValid()
     {
@@ -46,16 +48,19 @@ public class DateTimeTests
     {
         Assert.True(new DateTime(MaximumInt) == new DateTime(MaximumInt));
     }
+
     [Fact]
     public void IEquatable_DifferentValue_ReturnFalse()
     {
         Assert.False(new DateTime(MaximumInt) == new DateTime(MinimumInt));
     }
+
     [Fact]
     public void IEquatable_NullValue_ReturnFalse()
     {
         Assert.False(new DateTime(MaximumInt).Equals(null));
     }
+
     [Fact]
     public void IEquatable_NonDateTime_ReturnFalse()
     {
