@@ -46,6 +46,15 @@ get-ip:
 lint:
     docker run -v $(pwd):/app -v $(pwd)/.linters:/polylint/.linters outoforbitdev/polylint:0.1.0
 
+lint-write:
+    docker build .local --tag local-lint
+    docker rm csharpier
+    docker run \
+        -v ./src:/app/src \
+        -v ~/.nuget/packages:/root/.nuget/packages \
+        --name csharpier \
+        local-lint /bin/sh ./lint.sh
+
 migrate NAME:
     cd src/service && dotnet ef migrations add {{NAME}}
 
