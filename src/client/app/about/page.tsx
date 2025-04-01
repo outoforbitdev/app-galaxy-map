@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div>
-    <h3>What this is</h3>
+      <h3>What this is</h3>
       <p>
         This is a map of the systems in the Star Wars galaxy and the hyperlanes
         that connect them. It’s meant as a way to explore the galaxy.
