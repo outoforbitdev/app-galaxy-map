@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Controllers;
 
-public struct Planet
-{
+public struct Planet{
     public Planet(string name, int x, int y, string color, int focusLevel)
     {
         Name = name;
