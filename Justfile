@@ -55,8 +55,8 @@ lint-write:
         -v ~/.nuget/packages:/root/.nuget/packages \
         --name csharpier \
         local-lint /bin/sh ./lint.sh
-    npx prettier --write .
-    yamllint -c .yamllint.yml ./
+    npx prettier --write --ignore-path src/client/.gitignore src/client/
+    yamllint -c .yamllint.yml .github/
 
 migrate NAME:
     cd src/service && dotnet ef migrations add {{NAME}}
