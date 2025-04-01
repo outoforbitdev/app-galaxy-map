@@ -1,6 +1,7 @@
 namespace GalaxyMapSiteApi.Models.Map;
 
-public enum FocusLevel {
+public enum FocusLevel
+{
     Primary,
     Secondary,
     Tertiary,

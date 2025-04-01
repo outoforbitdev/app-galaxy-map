@@ -1,6 +1,7 @@
 namespace GalaxyMapSiteApi.Models.Map;
 
-public struct System {
+public struct System
+{
     #region Properties
     public string Name { get; set; }
     public int X { get; set; }
@@ -9,13 +10,20 @@ public struct System {
     public string FocusLevel { get; set; }
     #endregion Properties
     #region Constructors
-    public System(Models.System system) {
-        if (system.Planets.Count > 0) {
+    public System(Models.System system)
+    {
+        if (system.Planets.Count > 0)
+        {
             Planet primaryPlanet = system.Planets.First();
             Name = primaryPlanet.Name;
-            Color = Map.GetColorFromEnum(primaryPlanet.CurrentGovernment is not null ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color: MapColor.Gray);
+            Color = Map.GetColorFromEnum(
+                primaryPlanet.CurrentGovernment is not null
+                    ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color
+                    : MapColor.Gray
+            );
         }
-        else {
+        else
+        {
             Name = system.Name;
             Color = Map.GetColorFromEnum(MapColor.Gray);
         }
