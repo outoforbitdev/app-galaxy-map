@@ -5,7 +5,8 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "commitlint": "^19.7.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3"
   },
   "bugs": {
     "url": "https://github.com/outoforbitdev/app-galaxy-map/issues"

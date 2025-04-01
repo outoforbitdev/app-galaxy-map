@@ -1,7 +1,6 @@
 extends: default
 
 ignore: |
-  scorecard.yml
   node_modules
 
 rules:
