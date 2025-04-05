@@ -40,13 +40,13 @@ export default function About() {
         The UI for this was built from the ground up as an svg in React using
         Next.js.
       </p>
-      <h3>What's next?</h3>
+      <h3>What is next?</h3>
       <p>
-        I have mapped over 2000 systems, but there's almost 3000 systemsnot yet
-        mapped on either the Legends or Legends+ version. I'll probably always
-        be adding more as I find more info. The next piece of functionality is
-        to show the government affiliations of each system at various
-        timepoints, starting with the Clone Wars.
+        I have mapped over 2000 systems, but there are almost 3000 systems not
+        yet mapped on either the Legends or Legends+ version. I will probably
+        always be adding more as I find more info. The next piece of
+        functionality is to show the government affiliations of each system at
+        various timepoints, starting with the Clone Wars.
       </p>
     </div>
   );
