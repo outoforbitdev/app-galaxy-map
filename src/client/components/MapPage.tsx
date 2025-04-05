@@ -10,7 +10,6 @@ interface IMapPageProps {
 export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
-  const [exampleCustomOption, setExampleCustomOption] = useState(true);
 
   const fetchMap = async function () {
     const data = await fetch(`/api/map?instanceId=${props.instanceId}`);
