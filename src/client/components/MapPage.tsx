@@ -10,7 +10,6 @@ interface IMapPageProps {
 export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
-  const [exampleCustomOption, setExampleCustomOption] = useState(true);
 
   const fetchMap = async function () {
     const data = await fetch(`/api/map?instanceId=${props.instanceId}`);
@@ -29,19 +28,7 @@ export default function MapPage(props: IMapPageProps) {
     fetchMap();
   }, []);
 
-  const customOptions = [
-    {
-      currentValue: exampleCustomOption,
-      setValue: setExampleCustomOption,
-      label: "example custom option",
-      inputType: "checkbox",
-    },
-  ];
-
-  const mapOptions = {
-    showAllPlanets: true,
-    customOptions: customOptions,
-  };
+  const customOptions = <p>Example custom option</p>;
 
   return (
     <Fragment>
@@ -50,7 +37,10 @@ export default function MapPage(props: IMapPageProps) {
         spacelanes={spacelanes}
         dimensions={{ minX: -12000, maxX: 12000, minY: -12000, maxY: 12000 }}
         zoom={{ initial: 0.5, min: 0.3, max: 10 }}
-        mapOptions={mapOptions}
+        mapOptions={{
+          planetVisibility: "show",
+          customOptions: customOptions,
+        }}
       />
       <p>
         Star Wars and all associated names are copyright Lucasfilm and Disney.
