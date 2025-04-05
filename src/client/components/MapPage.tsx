@@ -29,9 +29,7 @@ export default function MapPage(props: IMapPageProps) {
     fetchMap();
   }, []);
 
-  const customOptions = (
-    <p>Example custom option</p>
-  )
+  const customOptions = <p>Example custom option</p>;
 
   return (
     <Fragment>
