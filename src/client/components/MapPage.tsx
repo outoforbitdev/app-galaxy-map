@@ -36,7 +36,7 @@ export default function MapPage(props: IMapPageProps) {
         planets={planets}
         spacelanes={spacelanes}
         dimensions={{ minX: -12000, maxX: 12000, minY: -12000, maxY: 12000 }}
-        zoom={{ initial: 0.5, min: 0.3, max: 10 }}
+        zoom={{ initial: 0.5, min: 0.25, max: 10 }}
         mapOptions={{
           planetVisibility: "show",
           customOptions: customOptions,
