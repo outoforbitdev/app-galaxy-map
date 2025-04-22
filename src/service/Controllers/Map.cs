@@ -38,12 +38,9 @@ public class MapController : ControllerBase
     [HttpGet("{instanceId}")]
     public async Task<ActionResult<Models.Map.Map>> Get(string instanceId)
     {
-        List<Models.System> systems = await _context
-            .Systems.Where(s => s.InstanceId == instanceId)
-            .Include(s => s.Planets)
-            .ThenInclude(p => p.ParentGovernments)
-            .ThenInclude(p => p.Government)
-            .ToListAsync();
+        SystemsRepo systemsRepo = new SystemsRepo(_context.Systems);
+        List<Models.System> systems =
+            await systemsRepo.GetAllSystemsForInstanceWithPlanetsAndGovernments(instanceId);
         List<Models.SpacelaneSegment> spacelanes = await _context
             .SpacelaneSegments.Where(s => s.InstanceId == instanceId)
             .Include(spacelane => spacelane.Spacelane)
