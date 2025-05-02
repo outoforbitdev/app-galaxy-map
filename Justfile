@@ -46,14 +46,14 @@ get-ip:
 lint:
     docker build .local --tag local-lint
     docker rm csharpier
-    docker run -v ./src:/app/src -v ~/.nuget/packages:/root/.nuget/packages --name csharpier local-lint /bin/sh ./lint.sh --check
+    docker run -v ./src:/app/src -v ~/.nuget/packages:/root/.nuget/packages --name csharpier local-lint /bin/sh ./lint.sh check
     npx prettier --check --ignore-path src/client/.gitignore src/client/
     yamllint -c .yamllint.yml .github/
 
 lint-write:
     docker build .local --tag local-lint
     docker rm csharpier
-    docker run -v ./src:/app/src -v ~/.nuget/packages:/root/.nuget/packages --name csharpier local-lint /bin/sh ./lint.sh; echo $?
+    docker run -v ./src:/app/src -v ~/.nuget/packages:/root/.nuget/packages --name csharpier local-lint /bin/sh ./lint.sh format; echo $?
     npx prettier --write --ignore-path src/client/.gitignore src/client/
     yamllint -c .yamllint.yml .github/
 
