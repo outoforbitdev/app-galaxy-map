@@ -17,7 +17,7 @@ jobs:
           docker build .local --tag local-lint
           docker run -v ./src:/app/src \
           -v ~/.nuget/packages:/root/.nuget/packages --name csharpier \
-          local-lint /bin/sh ./lint.sh --check
+          local-lint /bin/sh ./lint.sh check
       - name: Prettier
         run: |
           npx prettier --check --ignore-path src/client/.gitignore src/client/

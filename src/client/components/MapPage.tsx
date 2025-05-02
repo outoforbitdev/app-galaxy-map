@@ -2,6 +2,7 @@
 
 import GalaxyMap from "@outoforbitdev/galaxy-map";
 import { Fragment, useEffect, useState } from "react";
+import DateSelect from "./DateSelect";
 
 interface IMapPageProps {
   instanceId: string;
@@ -10,9 +11,12 @@ interface IMapPageProps {
 export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
+  const [date, setDate] = useState(-25);
 
   const fetchMap = async function () {
-    const data = await fetch(`/api/map?instanceId=${props.instanceId}`);
+    const data = await fetch(
+      `/api/map?instanceId=${props.instanceId}&date=${date}`,
+    );
     if (!data.ok) {
       console.error("Failed to fetch map data");
       return;
@@ -26,9 +30,9 @@ export default function MapPage(props: IMapPageProps) {
   };
   useEffect(() => {
     fetchMap();
-  }, []);
+  }, [date]);
 
-  const customOptions = <p>Example custom option</p>;
+  const customOptions = <DateSelect onChange={setDate} defaultValue={date} />;
 
   return (
     <Fragment>
