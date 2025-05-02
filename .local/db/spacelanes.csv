@@ -1,13 +1,13 @@
 instance_id,id,name,focus_string
-legends_base,capital_circuit,Capital Circuit,
-legends_base,trade_lane,Trade Lane,Primary
-legends_base,northern_route,Northern Route,Primary
-legends_base,central_branch,Central Branch,Secondary
-legends_base,shipwright_pipeline,Shipwright Pipeline,Quaternary
-legends_base,nebula_pass,Nebula Pass,Tertiary
-legends_plus,capital_circuit,Capital Circuit,
-legends_plus,trade_lane,Trade Lane,Primary
-legends_plus,northern_route,Northern Route,Primary
-legends_plus,central_branch,Central Branch,Secondary
-legends_plus,shipwright_pipeline,Shipwright Pipeline,Quaternary
-legends_plus,nebula_pass,Nebula Pass,Tertiary
+legends_base,primary,Primary,Primary
+legends_base,secondary,Secondary,Secondary
+legends_base,tertiary,Tertiary,Tertiary
+legends_base,quaternary,Quaternary,Quaternary
+legends_base,unknown,Unknown,
+legends_base,gray,Gray,
+legends_base,red,Red,
+legends_base,blue,Blue,
+legends_base,green,Green,
+legends_base,yellow,Yellow,
+legends_base,magenta,Magenta,
+legends_base,aqua,Aqua,

@@ -1,35 +1,36 @@
 instance_id,id,name,system_id
-legends_base,capital_planet,Capital Planet,capital_prime
-legends_base,capital_farm,Capital Farm,capital_ii
-legends_base,capital_mine,Capital Mine,capital_iii
-legends_base,trade_center,Trade Center,trade_center
-legends_base,blue_trade,Blue Trade,blue_trade_center
-legends_base,outer_capital,Outer Capital,outer_capital
-legends_base,outer_capital_ii,Outer Capital II,outer_capital
-legends_base,outer_capital_iii,Outer Capital III,outer_capital
-legends_base,desert,Desert,desert
-legends_base,bug_desert,Bug Desert,bug_desert
-legends_base,corporate_capital,Corporate Capital,corporate_capital
-legends_base,corporate_terminal,Corporate Terminal,corporate_terminal
-legends_base,ocean,Ocean,ocean
-legends_base,forest,Forest,forest
-legends_base,matriarch,Matriarch,matriarch
-legends_base,mercenaries,Mercenaries,mercenaries
-legends_base,shipbuilder_alpha,Shipbuilder Alpha,shipbuilder_alpha
-legends_plus,capital_planet,Capital Planet+,capital_prime
-legends_plus,capital_farm,Capital Farm,capital_ii
-legends_plus,capital_mine,Capital Mine,capital_iii
-legends_plus,trade_center,Trade Center,trade_center
-legends_plus,blue_trade,Blue Trade,blue_trade_center
-legends_plus,outer_capital,Outer Capital,outer_capital
-legends_plus,outer_capital_ii,Outer Capital II,outer_capital
-legends_plus,outer_capital_iii,Outer Capital III,outer_capital
-legends_plus,desert,Desert,desert
-legends_plus,bug_desert,Bug Desert,bug_desert
-legends_plus,corporate_capital,Corporate Capital,corporate_capital
-legends_plus,corporate_terminal,Corporate Terminal,corporate_terminal
-legends_plus,ocean,Ocean,ocean
-legends_plus,forest,Forest,forest
-legends_plus,matriarch,Matriarch,matriarch
-legends_plus,mercenaries,Mercenaries,mercenaries
-legends_plus,shipbuilder_alpha,Shipbuilder Alpha,shipbuilder_alpha
+legends_base,gray_primary,Gray Primary,gray_primary
+legends_base,gray_secondary,Gray Secondary,gray_secondary
+legends_base,gray_tertiary,Gray Tertiary,gray_tertiary
+legends_base,gray_quaternary,Gray Quaternary,gray_quaternary
+legends_base,gray_unknown,Gray Unknown,gray_unknown
+legends_base,red_primary,Red Primary,red_primary
+legends_base,red_secondary,Red Secondary,red_secondary
+legends_base,red_tertiary,Red Tertiary,red_tertiary
+legends_base,red_quaternary,Red Quaternary,red_quaternary
+legends_base,red_unknown,Red Unknown,red_unknown
+legends_base,blue_primary,Blue Primary,blue_primary
+legends_base,blue_secondary,Blue Secondary,blue_secondary
+legends_base,blue_tertiary,Blue Tertiary,blue_tertiary
+legends_base,blue_quaternary,Blue Quaternary,blue_quaternary
+legends_base,blue_unknown,Blue Unknown,blue_unknown
+legends_base,green_primary,Green Primary,green_primary
+legends_base,green_secondary,Green Secondary,green_secondary
+legends_base,green_tertiary,Green Tertiary,green_tertiary
+legends_base,green_quaternary,Green Quaternary,green_quaternary
+legends_base,green_unknown,Green Unknown,green_unknown
+legends_base,yellow_primary,Yellow Primary,yellow_primary
+legends_base,yellow_secondary,Yellow Secondary,yellow_secondary
+legends_base,yellow_tertiary,Yellow Tertiary,yellow_tertiary
+legends_base,yellow_quaternary,Yellow Quaternary,yellow_quaternary
+legends_base,yellow_unknown,Yellow Unknown,yellow_unknown
+legends_base,magenta_primary,Magenta Primary,magenta_primary
+legends_base,magenta_secondary,Magenta Secondary,magenta_secondary
+legends_base,magenta_tertiary,Magenta Tertiary,magenta_tertiary
+legends_base,magenta_quaternary,Magenta Quaternary,magenta_quaternary
+legends_base,magenta_unknown,Magenta Unknown,magenta_unknown
+legends_base,aqua_primary,Aqua Primary,aqua_primary
+legends_base,aqua_secondary,Aqua Secondary,aqua_secondary
+legends_base,aqua_tertiary,Aqua Tertiary,aqua_tertiary
+legends_base,aqua_quaternary,Aqua Quaternary,aqua_quaternary
+legends_base,aqua_unknown,Aqua Unknown,aqua_unknown

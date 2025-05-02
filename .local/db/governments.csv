@@ -1,13 +1,8 @@
 instance_id,id,name,color_string
-legends_base,core,Core,Red
-legends_base,outer,Outer,Blue
-legends_base,insurgents,Insurgents,Green
-legends_base,capital,Capital,Yellow
-legends_base,trade_center,Trade Center,Magenta
-legends_base,corporate,Corporate,Aqua
-legends_plus,core,Core,Red
-legends_plus,outer,Outer,Blue
-legends_plus,insurgents,Insurgents,Green
-legends_plus,capital,Capital,Yellow
-legends_plus,trade_center,Trade Center,Magenta
-legends_plus,corporate,Corporate,Aqua
+legends_base,gray,Gray,Gray
+legends_base,red,Red,Red
+legends_base,blue,Blue,Blue
+legends_base,green,Green,Green
+legends_base,yellow,Yellow,Yellow
+legends_base,magenta,Magenta,Magenta
+legends_base,aqua,Aqua,Aqua
