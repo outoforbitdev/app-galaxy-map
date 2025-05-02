@@ -1,5 +1,4 @@
 instance_id,child_government_id,parent_government_id,relationship_string
-legends_base,capital,core,Member
-legends_base,trade_center,core,Member
-legends_plus,capital,core,Member
-legends_plus,trade_center,core,Member
+legends_base,gray,red,Member
+legends_base,blue,green,Member
+legends_base,yellow,magenta,Member
