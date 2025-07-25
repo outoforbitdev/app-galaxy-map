@@ -2,11 +2,11 @@
   "name": "app-galaxy-map",
   "description": "",
   "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "commitlint": "^19.7.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitlint": "^19.8.1",
     "husky": "^9.1.7",
-    "prettier": "^3.5.3"
+    "prettier": "^3.6.2"
   },
   "bugs": {
     "url": "https://github.com/outoforbitdev/app-galaxy-map/issues"
