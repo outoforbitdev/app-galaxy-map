@@ -9,18 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@outoforbitdev/galaxy-map": "^0.0.8",
-    "next": "15.2.3",
-    "node-fetch": "^3.3.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@outoforbitdev/galaxy-map": "0.0.8",
+    "next": "15.4.4",
+    "node-fetch": "3.3.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@types/node": "^22",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "eslint": "^9.22.0",
-    "eslint-config-next": "^15.2.4",
-    "typescript": "^5.8.2"
+    "@types/node": "22",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0",
+    "eslint": "9.32.0",
+    "eslint-config-next": "15.4.4",
+    "typescript": "5.8.3"
   }
 }
