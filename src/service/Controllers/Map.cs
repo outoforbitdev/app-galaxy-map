@@ -39,7 +39,8 @@ public class MapController : ControllerBase
     [HttpGet("instance/{instanceId}/date/{date}")]
     public async Task<ActionResult<Models.Map.Map>> Get(string instanceId, int date)
     {
-        date = date + (368 / 2);
+        // Adjust the date to be in the middle of the year
+        date += (368 / 2);
         List<Models.System> systems = await _context
             .Systems.Where(s =>
                 s.InstanceId == instanceId
