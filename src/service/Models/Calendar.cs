@@ -32,6 +32,10 @@ public class Calendar : InstanceEntity
     #endregion Properties
     #region Constructors
     [SetsRequiredMembers]
+    public Calendar()
+        : this(null!, string.Empty, string.Empty, 0, 0, 0, 0, false) { }
+
+    [SetsRequiredMembers]
     public Calendar(
         Instance instance,
         string id,

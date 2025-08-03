@@ -1,4 +1,5 @@
 using GalaxyMapSiteApi.Data;
+using GalaxyMapSiteApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,11 +36,19 @@ public class MapController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("{instanceId}")]
-    public async Task<ActionResult<Models.Map.Map>> Get(string instanceId)
+    [HttpGet("instance/{instanceId}/date/{date}")]
+    public async Task<ActionResult<Models.Map.Map>> Get(string instanceId, int date)
     {
+        // Adjust the date to be in the middle of the year
+        date += (368 / 2);
         List<Models.System> systems = await _context
-            .Systems.Where(s => s.InstanceId == instanceId)
+            .Systems.Where(s =>
+                s.InstanceId == instanceId
+                && s.StartDate != null
+                && s.StartDate < new Date(date)
+                && s.EndDate != null
+                && s.EndDate > new Date(date)
+            )
             .Include(s => s.Planets)
             .ThenInclude(p => p.ParentGovernments)
             .ThenInclude(p => p.Government)

@@ -1,4 +1,5 @@
 using EFCore.NamingConventions;
+using GalaxyMapSiteApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Data;
@@ -13,6 +14,11 @@ public class GalaxyMapContext : DbContext
         optionsBuilder.UseLazyLoadingProxies().UseSnakeCaseNamingConvention();
     }
 
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        configurationBuilder.Properties<Date>().HaveConversion<DateConverter>();
+    }
+
     public DbSet<Models.System> Systems { get; set; }
     public DbSet<Models.Spacelane> Spacelanes { get; set; }
     public DbSet<Models.SpacelaneSegment> SpacelaneSegments { get; set; }
@@ -20,6 +26,7 @@ public class GalaxyMapContext : DbContext
     public DbSet<Models.Government> Governments { get; set; }
     public DbSet<Models.GovernmentGovernment> GovernmentGovernments { get; set; }
     public DbSet<Models.Instance> Instances { get; set; }
+    public DbSet<Models.Calendar> Calendars { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

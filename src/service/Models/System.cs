@@ -24,6 +24,8 @@ public class System : InstanceEntity
     }
     public string? Sector { get; set; }
     public string? Region { get; set; }
+    public Date? StartDate { get; set; }
+    public Date? EndDate { get; set; }
 
     [NotMapped]
     public FocusLevel? Focus { get; set; }
