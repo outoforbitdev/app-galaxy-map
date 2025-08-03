@@ -5,8 +5,10 @@ interface IDateSelectProps {
 
 export default function DateSelect(props: IDateSelectProps) {
   const dates = [
-    { value: -25000, label: "25000 BBY" },
-    { value: -25, label: "25 BBY" },
+    { value: -10672000, label: "29000 BBY" },
+    { value: -9936000, label: "27000 BBY" },
+    { value: -8832000, label: "24000 BBY" },
+    { value: 0, label: "0 BBY" },
   ];
 
   return (

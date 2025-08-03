@@ -1,6 +1,6 @@
 namespace GalaxyMapSiteApi.Models;
 
-public struct Date : IEquatable<Date>
+public struct Date : IEquatable<Date>, IComparable<Date>
 {
     #region Properties
     public int Days;
@@ -40,6 +40,21 @@ public struct Date : IEquatable<Date>
     public static bool operator !=(Date a, Date b)
     {
         return !a.Equals(b);
+    }
+
+    public int CompareTo(Date other)
+    {
+        return Days - other.Days;
+    }
+
+    public static bool operator <(Date a, Date b)
+    {
+        return a.CompareTo(b) < 0;
+    }
+
+    public static bool operator >(Date a, Date b)
+    {
+        return a.CompareTo(b) > 0;
     }
     #endregion IEquatable
     public override string ToString()
