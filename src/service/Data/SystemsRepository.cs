@@ -40,14 +40,4 @@ public class SystemsRepository
             .ThenInclude(p => p.Government)
             .ToListAsync();
     }
-
-    public async Task<Models.System?> GetSystemByName(string instanceId, string name)
-    {
-        return await Systems
-            .Where(s =>
-                s.InstanceId == instanceId
-                && (s.Name == name || s.OtherNames != null && s.OtherNames.Contains(name))
-            )
-            .FirstOrDefaultAsync();
-    }
 }

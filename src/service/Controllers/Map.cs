@@ -53,12 +53,6 @@ public class MapController : ControllerBase
                 date
             );
         Models.Map.Map data = new Models.Map.Map(systems, spacelanes);
-        Models.System? anotherNameSystem = await systemsRepo.GetSystemByName(
-            instanceId,
-            "another_name"
-        ); // Ensure another_name is loaded
-        Console.WriteLine("anotherNameSystem: " + anotherNameSystem?.Name);
-        Console.WriteLine(anotherNameSystem?.Id);
         return data;
     }
 }
