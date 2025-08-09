@@ -17,11 +17,7 @@ public class Planet : InstanceEntity
     [NotMapped]
     public Government? CurrentGovernment
     {
-        get
-        {
-            Console.WriteLine(ParentGovernments.Count);
-            return ParentGovernments.Count > 0 ? ParentGovernments.First().Government : null;
-        }
+        get { return ParentGovernments.Count > 0 ? ParentGovernments.First().Government : null; }
     }
     #endregion Properties
     #region Constructors

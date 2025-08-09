@@ -1,3 +1,6 @@
+## Next
+- Use date option to view the map at different periods in galactic history.
+
 ## 1.2.0 (2025-03-22)
 
 ### Features
