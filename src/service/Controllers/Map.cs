@@ -41,24 +41,17 @@ public class MapController : ControllerBase
     {
         // Adjust the date to be in the middle of the year
         date += (368 / 2);
-        List<Models.System> systems = await _context
-            .Systems.Where(s =>
-                s.InstanceId == instanceId
-                && s.StartDate != null
-                && s.StartDate < new Date(date)
-                && s.EndDate != null
-                && s.EndDate > new Date(date)
-            )
-            .Include(s => s.Planets)
-            .ThenInclude(p => p.ParentGovernments)
-            .ThenInclude(p => p.Government)
-            .ToListAsync();
-        List<Models.SpacelaneSegment> spacelanes = await _context
-            .SpacelaneSegments.Where(s => s.InstanceId == instanceId)
-            .Include(spacelane => spacelane.Spacelane)
-            .Include(spacelane => spacelane.Origin)
-            .Include(spacelane => spacelane.Destination)
-            .ToListAsync();
+        Data.SystemsRepository systemsRepo = new Data.SystemsRepository(_context.Systems);
+        Data.SpacelaneSegmentsRepository segmentsRepo = new Data.SpacelaneSegmentsRepository(
+            _context.SpacelaneSegments
+        );
+        List<Models.System> systems =
+            await systemsRepo.GetAllSystemsForInstanceDateWithPlanetGovernments(instanceId, date);
+        List<Models.SpacelaneSegment> spacelanes =
+            await segmentsRepo.GetSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(
+                instanceId,
+                date
+            );
         Models.Map.Map data = new Models.Map.Map(systems, spacelanes);
         return data;
     }
