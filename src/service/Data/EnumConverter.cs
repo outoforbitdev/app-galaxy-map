@@ -9,6 +9,5 @@ public class EnumConverter<TEnum> : ValueConverter<TEnum, string>
         : base(
             enumValue => enumValue.ToString(),
             stringValue => EnumConverter.ConvertToEnumOrNull<TEnum>(stringValue) ?? default(TEnum)
-        )
-    { }
+        ) { }
 }

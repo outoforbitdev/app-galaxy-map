@@ -17,7 +17,9 @@ public class GalaxyMapContext : DbContext
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
         configurationBuilder.Properties<Date>().HaveConversion<DateConverter>();
-        configurationBuilder.Properties<OrganizationType>().HaveConversion<EnumConverter<OrganizationType>>();
+        configurationBuilder
+            .Properties<OrganizationType>()
+            .HaveConversion<EnumConverter<OrganizationType>>();
     }
 
     public DbSet<Models.System> Systems { get; set; }
@@ -81,7 +83,9 @@ public class GalaxyMapContext : DbContext
                         oo.ChildId,
                         oo.ParentId,
                     });
-                    j.HasQueryFilter(oo => oo.Parent.OrganizationType == OrganizationType.Government);
+                    j.HasQueryFilter(oo =>
+                        oo.Parent.OrganizationType == OrganizationType.Government
+                    );
                 }
             );
 
@@ -108,7 +112,9 @@ public class GalaxyMapContext : DbContext
                         oo.ChildId,
                         oo.ParentId,
                     });
-                    j.HasQueryFilter(oo => oo.Child.OrganizationType == OrganizationType.Government);
+                    j.HasQueryFilter(oo =>
+                        oo.Child.OrganizationType == OrganizationType.Government
+                    );
                 }
             );
         #endregion Organization Relationships
