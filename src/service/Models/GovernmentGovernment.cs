@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-[Table("government_governments")]
 public class GovernmentGovernment : InstanceRelationship<Government, Government>
 {
     #region Properties

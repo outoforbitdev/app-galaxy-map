@@ -20,7 +20,7 @@ public class Government : InstanceEntity
         get { return Color.ToString(); }
         set { Color = (MapColor)Enum.Parse(typeof(MapColor), value); }
     }
-    public virtual ICollection<Planet> Planets { get; set; }
+    public virtual required ICollection<Planet> Planets { get; set; }
     public virtual ICollection<Government> ParentGovernments { get; set; } = [];
     public virtual ICollection<Government> ChildGovernments { get; set; } = [];
 

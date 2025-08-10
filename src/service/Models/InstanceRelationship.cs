@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GalaxyMapSiteApi.Models;
 
 [PrimaryKey(nameof(InstanceId), nameof(ChildId), nameof(ParentId))]
-public abstract class InstanceRelationship<ChildType, ParentType>
+public abstract class InstanceRelationship<ChildType, ParentType> : IDatedInstanceItem
     where ChildType : InstanceEntity
     where ParentType : InstanceEntity
 {
@@ -15,16 +15,19 @@ public abstract class InstanceRelationship<ChildType, ParentType>
     public virtual required Instance Instance { get; set; }
     public virtual required string InstanceId { get; set; }
 
+    public Date? StartDate { get; set; }
+    public Date? EndDate { get; set; }
+
     [ForeignKey("InstanceId, ChildId")]
     public virtual ChildType Child { get; set; } = null!;
 
     [Key, Column(Order = 1)]
-    public string ChildId { get; set; }
+    public required string ChildId { get; set; }
 
     [ForeignKey("InstanceId, ParentId")]
     public virtual ParentType Parent { get; set; } = null!;
 
     [Key, Column(Order = 2)]
-    public string ParentId { get; set; }
+    public required string ParentId { get; set; }
     #endregion Properties
 }
