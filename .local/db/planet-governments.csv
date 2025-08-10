@@ -1,4 +1,4 @@
-instance_id,planet_id,government_id,relationship_string
+instance_id,child_id,parent_id,relationship_string
 legends_base,gray_primary,gray,Member
 legends_base,gray_secondary,gray,Member
 legends_base,gray_tertiary,gray,Member

@@ -12,12 +12,12 @@ public class Planet : InstanceEntity
     [ForeignKey("InstanceId, SystemId")]
     public virtual System System { get; set; } = null!;
     public string SystemId { get; set; }
-    public virtual ICollection<PlanetGovernment> ParentGovernments { get; set; } = [];
+    public virtual ICollection<Government> Governments { get; set; } = [];
 
     [NotMapped]
     public Government? CurrentGovernment
     {
-        get { return ParentGovernments.Count > 0 ? ParentGovernments.First().Government : null; }
+        get { return Governments.Count > 0 ? Governments.First() : null; }
     }
     #endregion Properties
     #region Constructors

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using GalaxyMapSiteApi.Data;
@@ -19,20 +20,15 @@ public class Government : InstanceEntity
         get { return Color.ToString(); }
         set { Color = (MapColor)Enum.Parse(typeof(MapColor), value); }
     }
-    public virtual ICollection<PlanetGovernment> PlanetGovernments { get; set; } = [];
-
-    [NotMapped]
-    public List<Planet> Planets
-    {
-        get { return ((List<PlanetGovernment>)PlanetGovernments).ConvertAll(p => p.Planet); }
-    }
-    public virtual ICollection<GovernmentGovernment> ParentGovernments { get; set; } = [];
+    public virtual ICollection<Planet> Planets { get; set; }
+    public virtual ICollection<Government> ParentGovernments { get; set; } = [];
+    public virtual ICollection<Government> ChildGovernments { get; set; } = [];
 
     public Government GetParentGovernment()
     {
         if (ParentGovernments.Count > 0)
         {
-            return ParentGovernments.First().ParentGovernment.GetParentGovernment();
+            return ParentGovernments.First();
         }
         return this;
     }

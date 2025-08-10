@@ -26,7 +26,10 @@ public class SpacelaneSegmentsRepository
 
     public async Task<
         List<Models.SpacelaneSegment>
-    > GetSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(string instanceId, int date)
+    > GetAllSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(
+        string instanceId,
+        int date
+    )
     {
         return await SpacelaneSegments
             .Where(s =>
