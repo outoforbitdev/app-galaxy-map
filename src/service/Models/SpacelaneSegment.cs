@@ -16,8 +16,7 @@ public enum SpacelaneEndReason
 }
 
 [Table("spacelane_segments")]
-[Keyless]
-public class SpacelaneSegment : KeylessInstanceEntity
+public class SpacelaneSegment : InstanceEntityGeneric
 {
     #region Properties
     [ForeignKey("InstanceId, SpacelaneId")]
@@ -33,21 +32,6 @@ public class SpacelaneSegment : KeylessInstanceEntity
     public string DestinationId { get; set; }
 
     #region Dates
-    [NotMapped]
-    public Date? StartDate { get; set; }
-    public int? StartDateValue
-    {
-        get { return StartDate?.Days; }
-        set { StartDate = value is not null ? new Date((int)value) : null; }
-    }
-
-    [NotMapped]
-    public Date? EndDate { get; set; }
-    public int? EndDateValue
-    {
-        get { return EndDate?.Days; }
-        set { EndDate = value is not null ? new Date((int)value) : null; }
-    }
 
     [NotMapped]
     public SpacelaneStartReason? StartReason { get; set; }

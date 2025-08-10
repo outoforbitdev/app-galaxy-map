@@ -4,22 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-[Table("planet_governments")]
-[PrimaryKey(nameof(InstanceId), nameof(PlanetId), nameof(GovernmentId))]
-public class PlanetGovernment : KeylessInstanceEntity
+public class PlanetGovernment : InstanceRelationship<Planet, Government>
 {
     #region Properties
-    [ForeignKey("InstanceId, PlanetId")]
-    public virtual Planet Planet { get; set; } = null!;
-
-    [Key, Column(Order = 1)]
-    public string PlanetId { get; set; }
-
-    [ForeignKey("InstanceId, GovernmentId")]
-    public virtual Government Government { get; set; } = null!;
-
-    [Key, Column(Order = 2)]
-    public string GovernmentId { get; set; }
 
     [NotMapped]
     public GovernmentRelationship Relationship { get; set; }
@@ -34,10 +21,10 @@ public class PlanetGovernment : KeylessInstanceEntity
     }
     #endregion Properties
     #region Constructors
-    public PlanetGovernment(string planetId, string governmentId, string relationshipString)
+    public PlanetGovernment(string childId, string parentId, string relationshipString)
     {
-        PlanetId = planetId;
-        GovernmentId = governmentId;
+        ChildId = childId;
+        ParentId = parentId;
         RelationshipString = relationshipString;
     }
     #endregion Constructors

@@ -48,7 +48,7 @@ public class MapController : ControllerBase
         List<Models.System> systems =
             await systemsRepo.GetAllSystemsForInstanceDateWithPlanetGovernments(instanceId, date);
         List<Models.SpacelaneSegment> spacelanes =
-            await segmentsRepo.GetSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(
+            await segmentsRepo.GetAllSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(
                 instanceId,
                 date
             );

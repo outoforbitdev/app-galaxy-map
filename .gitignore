@@ -235,3 +235,4 @@ _Pvt_Extensions
 .DS_Store
 
 dotnet-tools.json
+/Microsoft.CodeAnalysis.Analyzers.4.14.0

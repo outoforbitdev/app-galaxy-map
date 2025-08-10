@@ -19,8 +19,7 @@ public class SystemsRepository
         return await Systems
             .Where(s => s.InstanceId == instanceId)
             .Include(s => s.Planets)
-            .ThenInclude(p => p.ParentGovernments)
-            .ThenInclude(p => p.Government)
+            .ThenInclude(p => p.Governments)
             .ToListAsync();
     }
 
@@ -36,8 +35,7 @@ public class SystemsRepository
                 && (s.EndDate == null || s.EndDate > new Date(date))
             )
             .Include(s => s.Planets)
-            .ThenInclude(p => p.ParentGovernments.Where(pg => pg.Government.Id == "red"))
-            .ThenInclude(p => p.Government)
+            .ThenInclude(p => p.Governments)
             .ToListAsync();
     }
 }

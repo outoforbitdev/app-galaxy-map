@@ -1,4 +1,4 @@
-instance_id,child_government_id,parent_government_id,relationship_string
+instance_id,child_id,parent_id,relationship_string
 legends_base,gray,red,Member
 legends_base,blue,green,Member
 legends_base,yellow,magenta,Member

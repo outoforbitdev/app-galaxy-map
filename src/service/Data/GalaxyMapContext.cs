@@ -33,8 +33,51 @@ public class GalaxyMapContext : DbContext
         modelBuilder
             .Entity<Models.Government>()
             .HasMany(g => g.ParentGovernments)
-            .WithOne(g => g.ChildGovernment)
-            .HasForeignKey(g => new { g.InstanceId, g.ChildGovernmentId })
-            .IsRequired();
+            .WithMany(g => g.ChildGovernments)
+            .UsingEntity<Models.GovernmentGovernment>(
+                j =>
+                    j.HasOne(gg => gg.Parent)
+                        .WithMany()
+                        .HasForeignKey(gg => new { gg.InstanceId, gg.ParentId }),
+                j =>
+                    j.HasOne(gg => gg.Child)
+                        .WithMany()
+                        .HasForeignKey(gg => new { gg.InstanceId, gg.ChildId }),
+                j =>
+                {
+                    j.ToTable("government_governments");
+                    j.HasKey(gg => new
+                    {
+                        gg.InstanceId,
+                        gg.ChildId,
+                        gg.ParentId,
+                    });
+                }
+            );
+
+        modelBuilder
+            .Entity<Models.Planet>()
+            .HasMany(p => p.Governments)
+            .WithMany(g => g.Planets)
+            .UsingEntity<Models.PlanetGovernment>(
+                j =>
+                    j.HasOne(pg => pg.Parent)
+                        .WithMany()
+                        .HasForeignKey(pg => new { pg.InstanceId, pg.ParentId }),
+                j =>
+                    j.HasOne(pg => pg.Child)
+                        .WithMany()
+                        .HasForeignKey(pg => new { pg.InstanceId, pg.ChildId }),
+                j =>
+                {
+                    j.ToTable("planet_governments");
+                    j.HasKey(pg => new
+                    {
+                        pg.InstanceId,
+                        pg.ChildId,
+                        pg.ParentId,
+                    });
+                }
+            );
     }
 }
