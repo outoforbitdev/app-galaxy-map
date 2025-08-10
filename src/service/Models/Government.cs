@@ -8,10 +8,9 @@ using Microsoft.EntityFrameworkCore;
 namespace GalaxyMapSiteApi.Models;
 
 [Table("governments")]
-public class Government : InstanceEntity
+public class Government : OrganizationEntity
 {
     #region Properties
-    public string Name { get; set; }
 
     [NotMapped]
     public MapColor Color { get; set; } = MapColor.Gray;
@@ -20,29 +19,7 @@ public class Government : InstanceEntity
         get { return Color.ToString(); }
         set { Color = (MapColor)Enum.Parse(typeof(MapColor), value); }
     }
-    public virtual required ICollection<Planet> Planets { get; set; }
-    public virtual ICollection<Government> ParentGovernments { get; set; } = [];
-    public virtual ICollection<Government> ChildGovernments { get; set; } = [];
-
-    public Government GetParentGovernment()
-    {
-        if (ParentGovernments.Count > 0)
-        {
-            return ParentGovernments.First();
-        }
-        return this;
-    }
-
-    public Government GetGalacticGovernment()
-    {
-        Government parent = GetParentGovernment();
-        // @TODO(jaymirecki): replace this comparison with an IEquatable comparison
-        if (parent.Name == this.Name)
-        {
-            return parent;
-        }
-        return parent.GetGalacticGovernment();
-    }
+    public virtual ICollection<Planet> Planets { get; set; } = [];
     #endregion Properties
     #region Constructors
     public Government(string name, string colorString)
@@ -51,4 +28,15 @@ public class Government : InstanceEntity
         ColorString = colorString;
     }
     #endregion Constructors
+
+    public Government GetGalacticGovernment()
+    {
+        Government? parent = GetParentGovernment();
+        // @TODO(jaymirecki): replace this comparison with an IEquatable comparison
+        if (parent is null)
+        {
+            return this;
+        }
+        return parent.GetGalacticGovernment();
+    }
 }
