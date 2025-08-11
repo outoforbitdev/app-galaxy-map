@@ -21,9 +21,6 @@ public struct System
                     ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color
                     : MapColor.Gray
             );
-            Console.WriteLine(
-                $"System: {Name}, Governments: {string.Join(", ", primaryPlanet.CurrentGovernment.Organization.ParentGovernments.Select(g => g.ToString()))}, Organizations: {string.Join(", ", primaryPlanet.CurrentGovernment.ParentOrganizations.Select(g => g.ToString()))}"
-            );
         }
         else
         {
