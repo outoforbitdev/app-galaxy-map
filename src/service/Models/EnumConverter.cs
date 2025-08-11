@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Threading.Tasks;
+
 namespace GalaxyMapSiteApi.Models;
 
 public class EnumConverter
@@ -20,5 +23,11 @@ public class EnumConverter
             return (TEnum)result;
         }
         return null;
+    }
+
+    public static TEnum ConvertToEnumOrDefault<TEnum>(string? value)
+        where TEnum : struct, Enum
+    {
+        return ConvertToEnumOrDefault(value, default(TEnum));
     }
 }

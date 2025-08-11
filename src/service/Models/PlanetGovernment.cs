@@ -9,14 +9,14 @@ public class PlanetGovernment : InstanceRelationship<Planet, Government>
     #region Properties
 
     [NotMapped]
-    public GovernmentRelationship Relationship { get; set; }
+    public OrganizationRelationship Relationship { get; set; }
     public string RelationshipString
     {
         get { return Relationship.ToString(); }
         set
         {
-            Relationship = (GovernmentRelationship)
-                Enum.Parse(typeof(GovernmentRelationship), value);
+            Relationship = (OrganizationRelationship)
+                Enum.Parse(typeof(OrganizationRelationship), value);
         }
     }
     #endregion Properties

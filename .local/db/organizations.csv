@@ -1,0 +1,9 @@
+instance_id,id,organization_type
+legends_base,gov_gray,Government
+legends_base,gov_red,Government
+legends_base,gov_blue,Government
+legends_base,gov_green,Government
+legends_base,gov_yellow,Government
+legends_base,gov_magenta,Government
+legends_base,gov_aqua,Government
+legends_base,corp_gray,Corporation

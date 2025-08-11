@@ -1,8 +1,8 @@
-instance_id,id,name,color_string
-legends_base,gray,Gray,Gray
-legends_base,red,Red,Red
-legends_base,blue,Blue,Blue
-legends_base,green,Green,Green
-legends_base,yellow,Yellow,Yellow
-legends_base,magenta,Magenta,Magenta
-legends_base,aqua,Aqua,Aqua
+instance_id,id,name,color_string,organization_id
+legends_base,gray,Gray,Gray,gov_gray
+legends_base,red,Red,Red,gov_red
+legends_base,blue,Blue,Blue,gov_blue
+legends_base,green,Green,Green,gov_green
+legends_base,yellow,Yellow,Yellow,gov_yellow
+legends_base,magenta,Magenta,Magenta,gov_magenta
+legends_base,aqua,Aqua,Aqua,gov_aqua
