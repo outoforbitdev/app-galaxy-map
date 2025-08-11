@@ -43,33 +43,8 @@ public class GalaxyMapContext : DbContext
             .Entity<Models.Organization>()
             .HasMany(o => o.ChildOrganizationRelationships)
             .WithOne(o => o.Parent);
-        // ParentOrganizations and ChildOrganizations
-        // modelBuilder
-        //     .Entity<Models.Organization>()
-        //     .HasMany(g => g.ParentOrganizations)
-        //     .WithMany(g => g.ChildOrganizations)
-        //     .UsingEntity<Models.OrganizationOrganization>(
-        //         j =>
-        //             j.HasOne(oo => oo.Parent)
-        //                 .WithMany()
-        //                 .HasForeignKey(oo => new { oo.InstanceId, oo.ParentId }),
-        //         j =>
-        //             j.HasOne(oo => oo.Child)
-        //                 .WithMany()
-        //                 .HasForeignKey(oo => new { oo.InstanceId, oo.ChildId }),
-        //         j =>
-        //         {
-        //             j.ToTable("organization_organizations");
-        //             j.HasKey(oo => new
-        //             {
-        //                 oo.InstanceId,
-        //                 oo.ChildId,
-        //                 oo.ParentId,
-        //             });
-        //         }
-        //     );
         #endregion Organization Relationships
-
+        #region Planet-Government Relationships
         modelBuilder
             .Entity<Models.Planet>()
             .HasMany(p => p.Governments)
@@ -94,5 +69,6 @@ public class GalaxyMapContext : DbContext
                     });
                 }
             );
+        #endregion Planet-Government Relationships
     }
 }
