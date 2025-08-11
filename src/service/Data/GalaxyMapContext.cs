@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EFCore.NamingConventions;
 using GalaxyMapSiteApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -34,89 +35,39 @@ public class GalaxyMapContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         #region Organization Relationships
+        modelBuilder
+            .Entity<Models.Organization>()
+            .HasMany(o => o.ParentOrganizationRelationships)
+            .WithOne(o => o.Child);
+        modelBuilder
+            .Entity<Models.Organization>()
+            .HasMany(o => o.ChildOrganizationRelationships)
+            .WithOne(o => o.Parent);
         // ParentOrganizations and ChildOrganizations
-        modelBuilder
-            .Entity<Models.Organization>()
-            .HasMany(g => g.ParentOrganizations)
-            .WithMany(g => g.ChildOrganizations)
-            .UsingEntity<Models.OrganizationOrganization>(
-                j =>
-                    j.HasOne(oo => oo.Parent)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ParentId }),
-                j =>
-                    j.HasOne(oo => oo.Child)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ChildId }),
-                j =>
-                {
-                    j.ToTable("organization_organizations");
-                    j.HasKey(oo => new
-                    {
-                        oo.InstanceId,
-                        oo.ChildId,
-                        oo.ParentId,
-                    });
-                }
-            );
-
-        // ParentGovernments
-        modelBuilder
-            .Entity<Models.Organization>()
-            .HasMany(g => g.ParentGovernments)
-            .WithMany()
-            .UsingEntity<Models.OrganizationOrganization>(
-                j =>
-                    j.HasOne(oo => oo.Parent)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ParentId }),
-                j =>
-                    j.HasOne(oo => oo.Child)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ChildId }),
-                j =>
-                {
-                    j.ToTable("organization_organizations");
-                    j.HasKey(oo => new
-                    {
-                        oo.InstanceId,
-                        oo.ChildId,
-                        oo.ParentId,
-                    });
-                    j.HasQueryFilter(oo =>
-                        oo.Parent.OrganizationType == OrganizationType.Government
-                    );
-                }
-            );
-
-        // ChildGovernments
-        modelBuilder
-            .Entity<Models.Organization>()
-            .HasMany(g => g.ChildGovernments)
-            .WithMany()
-            .UsingEntity<Models.OrganizationOrganization>(
-                j =>
-                    j.HasOne(oo => oo.Child)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ChildId }),
-                j =>
-                    j.HasOne(oo => oo.Parent)
-                        .WithMany()
-                        .HasForeignKey(oo => new { oo.InstanceId, oo.ParentId }),
-                j =>
-                {
-                    j.ToTable("organization_organizations");
-                    j.HasKey(oo => new
-                    {
-                        oo.InstanceId,
-                        oo.ChildId,
-                        oo.ParentId,
-                    });
-                    j.HasQueryFilter(oo =>
-                        oo.Child.OrganizationType == OrganizationType.Government
-                    );
-                }
-            );
+        // modelBuilder
+        //     .Entity<Models.Organization>()
+        //     .HasMany(g => g.ParentOrganizations)
+        //     .WithMany(g => g.ChildOrganizations)
+        //     .UsingEntity<Models.OrganizationOrganization>(
+        //         j =>
+        //             j.HasOne(oo => oo.Parent)
+        //                 .WithMany()
+        //                 .HasForeignKey(oo => new { oo.InstanceId, oo.ParentId }),
+        //         j =>
+        //             j.HasOne(oo => oo.Child)
+        //                 .WithMany()
+        //                 .HasForeignKey(oo => new { oo.InstanceId, oo.ChildId }),
+        //         j =>
+        //         {
+        //             j.ToTable("organization_organizations");
+        //             j.HasKey(oo => new
+        //             {
+        //                 oo.InstanceId,
+        //                 oo.ChildId,
+        //                 oo.ParentId,
+        //             });
+        //         }
+        //     );
         #endregion Organization Relationships
 
         modelBuilder

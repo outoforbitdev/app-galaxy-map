@@ -20,28 +20,36 @@ public abstract class OrganizationEntity : InstanceEntity
     public ICollection<Organization> ParentOrganizations
     {
         get { return Organization.ParentOrganizations; }
-        set { Organization.ParentOrganizations = value; }
     }
 
     [NotMapped]
     public ICollection<Organization> ChildOrganizations
     {
         get { return Organization.ChildOrganizations; }
-        set { Organization.ChildOrganizations = value; }
     }
 
     [NotMapped]
     public ICollection<Organization> ParentGovernments
     {
         get { return Organization.ParentGovernments; }
-        set { Organization.ParentGovernments = value; }
     }
 
     [NotMapped]
     public ICollection<Organization> ChildGovernments
     {
         get { return Organization.ChildGovernments; }
-        set { Organization.ChildGovernments = value; }
+    }
+
+    [NotMapped]
+    public ICollection<Organization> ParentCorporations
+    {
+        get { return Organization.ParentCorporations; }
+    }
+
+    [NotMapped]
+    public ICollection<Organization> ChildCorporations
+    {
+        get { return Organization.ChildCorporations; }
     }
 
     public Government? GetParentGovernment()
