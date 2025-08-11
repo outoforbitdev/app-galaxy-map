@@ -37,8 +37,15 @@ public class System : InstanceEntity
     }
     public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
+    /// <summary>
+    /// Gets the government that currently controls this system.
+    /// </summary>
+    /// <returns></returns>
     public Government? GetGovernment()
     {
+        // @TODO(jmirecki): This just gets the government of the first planet
+        // in the system with a government. This should be updated to find the
+        // common government among all planets in the system.
         return Planets.Select(p => p.CurrentGovernment).FirstOrDefault();
     }
 }
