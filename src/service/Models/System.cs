@@ -37,11 +37,8 @@ public class System : InstanceEntity
     }
     public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
-    #region Constructors
-    // public System(string name, Coordinates coordinates) {
-    //     Name = name;
-    //     Coordinates = coordinates;
-    // }
-    // public System(string name, int x, int y, string sector, string region, int focus): this(name, new Coordinates(){ X = x, Y = y }) {}
-    #endregion Constructors
+    public Government? GetGovernment()
+    {
+        return Planets.Select(p => p.CurrentGovernment).FirstOrDefault();
+    }
 }
