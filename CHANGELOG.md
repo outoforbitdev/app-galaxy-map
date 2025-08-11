@@ -1,8 +1,5 @@
 ## Next
-
-### Features
 - Use date option to view the map at different periods in galactic history.
-- Color spacelanes based on the governments that control the origin and destination of each segment.
 
 ## 1.2.0 (2025-03-22)
 

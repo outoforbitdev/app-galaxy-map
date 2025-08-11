@@ -19,14 +19,10 @@ public struct SpacelaneSegment
         YOne = spacelane.Origin.Coordinates.Y;
         XTwo = spacelane.Destination.Coordinates.X;
         YTwo = spacelane.Destination.Coordinates.Y;
+        Color = Map.GetColorFromEnum(MapColor.Gray);
         FocusLevel = Map.GetFocusLevelFromEnum(
             spacelane.Spacelane is not null ? spacelane.Spacelane.Focus : null
         );
-
-        Government originGov = spacelane.Origin.GetGovernment();
-        Government destGov = spacelane.Destination.GetGovernment();
-        Government commonGov = originGov.GetCommonGovernment(destGov);
-        Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment().Color);
     }
     #endregion Constructors
 }
