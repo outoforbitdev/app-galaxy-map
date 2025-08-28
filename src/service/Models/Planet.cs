@@ -10,7 +10,7 @@ public class Planet : InstanceEntity
     public string Name { get; set; }
 
     [ForeignKey("InstanceId, SystemId")]
-    public virtual System System { get; set; } = null!;
+    public virtual required System System { get; set; }
     public string SystemId { get; set; }
     public virtual ICollection<Government> Governments { get; set; } = [];
 

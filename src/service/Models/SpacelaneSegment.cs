@@ -16,6 +16,7 @@ public enum SpacelaneEndReason
 }
 
 [Table("spacelane_segments")]
+[PrimaryKey(nameof(InstanceId), nameof(OriginId), nameof(DestinationId))]
 public class SpacelaneSegment : InstanceEntityGeneric
 {
     #region Properties
@@ -24,11 +25,11 @@ public class SpacelaneSegment : InstanceEntityGeneric
     public string? SpacelaneId { get; set; }
 
     [ForeignKey("InstanceId, OriginId")]
-    public virtual System Origin { get; set; } = null!;
+    public virtual required System Origin { get; set; }
     public string OriginId { get; set; }
 
     [ForeignKey("InstanceId, DestinationId")]
-    public virtual System Destination { get; set; } = null!;
+    public virtual required System Destination { get; set; }
     public string DestinationId { get; set; }
 
     #region Dates

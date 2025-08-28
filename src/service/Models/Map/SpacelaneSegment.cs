@@ -14,6 +14,8 @@ public struct SpacelaneSegment
     #region Constructors
     public SpacelaneSegment(Models.SpacelaneSegment spacelane)
     {
+        if (spacelane is null)
+            return;
         Name = spacelane.Spacelane is not null ? spacelane.Spacelane.Name : "";
         XOne = spacelane.Origin.Coordinates.X;
         YOne = spacelane.Origin.Coordinates.Y;
@@ -25,8 +27,23 @@ public struct SpacelaneSegment
 
         Government originGov = spacelane.Origin.GetGovernment();
         Government destGov = spacelane.Destination.GetGovernment();
-        Government commonGov = originGov.GetCommonGovernment(destGov);
-        Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment().Color);
+        if (originGov is null && destGov is null)
+        {
+            Color = Map.GetColorFromEnum(null);
+        }
+        else if (originGov is null && destGov is not null)
+        {
+            Color = Map.GetColorFromEnum(destGov.GetGalacticGovernment().Color);
+        }
+        else if (destGov is null && originGov is not null)
+        {
+            Color = Map.GetColorFromEnum(originGov.GetGalacticGovernment().Color);
+        }
+        else
+        {
+            Government commonGov = originGov?.GetCommonGovernment(destGov);
+            Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment().Color);
+        }
     }
     #endregion Constructors
 }

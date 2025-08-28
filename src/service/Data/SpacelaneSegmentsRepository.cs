@@ -41,7 +41,17 @@ public class SpacelaneSegmentsRepository
             )
             .Include(s => s.Spacelane)
             .Include(s => s.Origin)
+            .ThenInclude(s => s.Planets)
+            .ThenInclude(p => p.Governments)
+            .ThenInclude(g => g.Organization)
+            .ThenInclude(o => o.ParentOrganizationRelationships)
+            .ThenInclude(por => por.Parent)
             .Include(s => s.Destination)
+            .ThenInclude(s => s.Planets)
+            .ThenInclude(p => p.Governments)
+            .ThenInclude(g => g.Organization)
+            .ThenInclude(o => o.ParentOrganizationRelationships)
+            .ThenInclude(por => por.Parent)
             .ToListAsync();
     }
 }

@@ -35,7 +35,7 @@ public class System : InstanceEntity
             Focus = value is not null ? (FocusLevel)Enum.Parse(typeof(FocusLevel), value) : null;
         }
     }
-    public virtual ICollection<Planet> Planets { get; } = [];
+    public virtual ICollection<Planet> Planets { get; set; } = [];
     #endregion Properties
     /// <summary>
     /// Gets the government that currently controls this system.

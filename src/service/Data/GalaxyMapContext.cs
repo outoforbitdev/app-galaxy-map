@@ -66,6 +66,7 @@ public class GalaxyMapContext : DbContext
                         pg.InstanceId,
                         pg.ChildId,
                         pg.ParentId,
+                        pg.StartDate,
                     });
                 }
             );

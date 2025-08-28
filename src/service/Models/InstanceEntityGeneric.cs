@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-[Keyless]
 public abstract class InstanceEntityGeneric : IDatedInstanceItem
 {
     #region Properties

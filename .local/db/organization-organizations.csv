@@ -1,4 +1,3 @@
 instance_id,child_id,parent_id,relationship_string,start_date
-legends_base,gov_gray,corp_gray,Member,-9935000
 legends_base,gov_blue,gov_green,Member,-9935000
-legends_base,gov_yellow,gov_magenta,Member,-9935000
+legends_base,gov_yellow,gov_violet,Member,-9935000

@@ -17,7 +17,7 @@ public class Government : OrganizationEntity, IEquatable<Government>
     public string ColorString
     {
         get { return Color.ToString(); }
-        set { Color = (MapColor)Enum.Parse(typeof(MapColor), value); }
+        set { Color = EnumConverter.ConvertToEnumOrDefault<MapColor>(value); }
     }
     public virtual ICollection<Planet> Planets { get; set; } = [];
     #endregion Properties

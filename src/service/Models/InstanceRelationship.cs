@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-[PrimaryKey(nameof(InstanceId), nameof(ChildId), nameof(ParentId))]
+[PrimaryKey(nameof(InstanceId), nameof(ChildId), nameof(ParentId), nameof(StartDate))]
 public abstract class InstanceRelationship<ChildType, ParentType> : IDatedInstanceItem
     where ChildType : InstanceEntity
     where ParentType : InstanceEntity
