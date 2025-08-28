@@ -11,22 +11,10 @@ namespace GalaxyMapSiteApi.Models;
 public class Government : OrganizationEntity, IEquatable<Government>
 {
     #region Properties
-
-    [NotMapped]
-    public MapColor Color { get; set; } = MapColor.Gray;
-    public string ColorString
-    {
-        get { return Color.ToString(); }
-        set { Color = (MapColor)Enum.Parse(typeof(MapColor), value); }
-    }
+    public MapColor? Color { get; set; } = MapColor.Gray;
     public virtual ICollection<Planet> Planets { get; set; } = [];
     #endregion Properties
     #region Constructors
-    public Government(string name, string colorString)
-    {
-        Name = name;
-        ColorString = colorString;
-    }
     #endregion Constructors
 
     public Government GetGalacticGovernment()

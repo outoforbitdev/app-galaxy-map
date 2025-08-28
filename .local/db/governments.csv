@@ -1,4 +1,4 @@
-instance_id,id,name,color_string,organization_id
+instance_id,id,name,color,organization_id
 legends_base,gray,Gray,Gray,gov_gray
 legends_base,red,Red,Red,gov_red
 legends_base,blue,Blue,Blue,gov_blue

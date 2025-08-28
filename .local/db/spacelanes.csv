@@ -1,4 +1,4 @@
-instance_id,id,name,focus_string
+instance_id,id,name,focus
 legends_base,primary,Primary,Primary
 legends_base,secondary,Secondary,Secondary
 legends_base,tertiary,Tertiary,Tertiary

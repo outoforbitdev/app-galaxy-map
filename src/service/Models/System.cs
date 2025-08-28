@@ -24,17 +24,7 @@ public class System : InstanceEntity
     }
     public string? Sector { get; set; }
     public string? Region { get; set; }
-
-    [NotMapped]
-    public FocusLevel? Focus { get; set; }
-    public string? FocusString
-    {
-        get { return Focus.ToString(); }
-        set
-        {
-            Focus = value is not null ? (FocusLevel)Enum.Parse(typeof(FocusLevel), value) : null;
-        }
-    }
+    public FocusLevel? Focus { get; set; } = FocusLevel.Quaternary;
     public virtual ICollection<Planet> Planets { get; } = [];
     #endregion Properties
     /// <summary>

@@ -1,4 +1,4 @@
-instance_id,id,name,x,y,sector,region,focus_string,start_date,end_date
+instance_id,id,name,x,y,sector,region,focus,start_date,end_date
 legends_base,gray_primary,Gray Primary,-8000,9000,,,Primary,-10120000,-9200
 legends_base,gray_secondary,Gray Secondary,-4000,9000,,,Secondary,-10120000,-9200
 legends_base,gray_tertiary,Gray Tertiary,0,9000,,,Tertiary,-10120000,-9200

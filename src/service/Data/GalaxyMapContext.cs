@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using EFCore.NamingConventions;
 using GalaxyMapSiteApi.Models;
+using GalaxyMapSiteApi.Models.Map;
 using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Data;
@@ -21,6 +22,8 @@ public class GalaxyMapContext : DbContext
         configurationBuilder
             .Properties<OrganizationType>()
             .HaveConversion<EnumConverter<OrganizationType>>();
+        configurationBuilder.Properties<MapColor>().HaveConversion<EnumConverter<MapColor>>();
+        configurationBuilder.Properties<FocusLevel>().HaveConversion<EnumConverter<FocusLevel>>();
     }
 
     public DbSet<Models.System> Systems { get; set; }
