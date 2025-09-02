@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace GalaxyMapSiteApi.Models.Map;
 
 public struct SpacelaneSegment
@@ -23,10 +25,10 @@ public struct SpacelaneSegment
             spacelane.Spacelane is not null ? spacelane.Spacelane.Focus : null
         );
 
-        Government originGov = spacelane.Origin.GetGovernment();
-        Government destGov = spacelane.Destination.GetGovernment();
-        Government commonGov = originGov.GetCommonGovernment(destGov);
-        Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment().Color);
+        Government? originGov = spacelane.Origin.GetGovernment();
+        Government? destGov = spacelane.Destination.GetGovernment();
+        Government? commonGov = originGov?.GetCommonGovernment(destGov);
+        Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment()?.Color);
     }
     #endregion Constructors
 }

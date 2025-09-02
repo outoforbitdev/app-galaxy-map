@@ -17,7 +17,7 @@ public class Government : OrganizationEntity, IEquatable<Government>
     #region Constructors
     #endregion Constructors
 
-    public Government GetGalacticGovernment()
+    public Government? GetGalacticGovernment()
     {
         Government? parent = GetParentGovernment();
         // @TODO(jaymirecki): replace this comparison with an IEquatable comparison
@@ -34,7 +34,7 @@ public class Government : OrganizationEntity, IEquatable<Government>
     /// </summary>
     /// <param name="other">The other government</param>
     /// <returns></returns>
-    public Government? GetCommonGovernment(Government other)
+    public Government? GetCommonGovernment(Government? other)
     {
         if (other is null)
             return null;
