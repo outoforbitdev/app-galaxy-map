@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace GalaxyMapSiteApi.Models.Map;
 
 public struct SpacelaneSegment
