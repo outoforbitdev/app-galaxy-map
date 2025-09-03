@@ -11,7 +11,7 @@ interface IMapPageProps {
 export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
-  const [date, setDate] = useState(-10672000);
+  const [date, setDate] = useState(-7900);
 
   const fetchMap = async function () {
     const data = await fetch(
