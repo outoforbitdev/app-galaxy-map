@@ -18,7 +18,7 @@ public struct System
             Name = primaryPlanet.Name;
             Color = Map.GetColorFromEnum(
                 primaryPlanet.CurrentGovernment is not null
-                    ? primaryPlanet.CurrentGovernment.GetGalacticGovernment().Color
+                    ? primaryPlanet.CurrentGovernment.GetGalacticGovernment()?.Color
                     : MapColor.Gray
             );
         }
