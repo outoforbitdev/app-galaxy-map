@@ -5,10 +5,8 @@ interface IDateSelectProps {
 
 export default function DateSelect(props: IDateSelectProps) {
   const dates = [
-    { value: -10672000, label: "29000 BBY" },
-    { value: -9936000, label: "27000 BBY" },
-    { value: -8832000, label: "24000 BBY" },
-    { value: 0, label: "0 BBY" },
+    { value: -10119788, label: "Rakatan Empire (27,000 BBY)" },
+    { value: -7900, label: "Battle of Geonosis (22 BBY)" },
   ];
 
   return (
