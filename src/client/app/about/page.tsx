@@ -1,6 +1,8 @@
+import styles from "../page.module.css";
+
 export default function About() {
   return (
-    <div>
+    <div className={styles.text_container}>
       <h3>What this is?</h3>
       <p>
         This is a map of the systems in the Star Wars galaxy and the hyperlanes
