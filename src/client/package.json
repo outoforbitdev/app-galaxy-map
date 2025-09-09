@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@outoforbitdev/galaxy-map": "file:../../../library-galaxy-map/outoforbitdev-galaxy-map-0.0.8.tgz",
+    "@outoforbitdev/galaxy-map": "^0.0.9",
     "@outoforbitdev/ood-react": "^0.0.1",
     "next": "15.4.4",
     "node-fetch": "3.3.2",
