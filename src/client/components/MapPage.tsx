@@ -3,6 +3,7 @@
 import GalaxyMap from "@outoforbitdev/galaxy-map";
 import { Fragment, useEffect, useState } from "react";
 import DateSelect from "./DateSelect";
+import styles from "../app/page.module.css";
 
 interface IMapPageProps {
   instanceId: string;
@@ -45,6 +46,7 @@ export default function MapPage(props: IMapPageProps) {
           planetVisibility: "show",
           customOptions: customOptions,
         }}
+        className={styles.map_container}
       />
       <p>
         Star Wars and all associated names are copyright Lucasfilm and Disney.

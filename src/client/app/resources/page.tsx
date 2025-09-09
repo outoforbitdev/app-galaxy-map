@@ -1,6 +1,8 @@
+import styles from "../page.module.css";
+
 export default function Resources() {
   return (
-    <div>
+    <div className={styles.text_container}>
       <h3>
         <a
           href="https://starwars.fandom.com/wiki/Main_Page"
