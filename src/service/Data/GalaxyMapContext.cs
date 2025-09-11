@@ -29,7 +29,7 @@ public class GalaxyMapContext : DbContext
     public DbSet<Models.System> Systems { get; set; }
     public DbSet<Models.Spacelane> Spacelanes { get; set; }
     public DbSet<Models.SpacelaneSegment> SpacelaneSegments { get; set; }
-    public DbSet<Models.Planet> Planets { get; set; }
+    public DbSet<Models.OrbitingBody> OrbitingBodies { get; set; }
     public DbSet<Models.Government> Governments { get; set; }
     public DbSet<Models.OrganizationOrganization> OrganizationOrganizations { get; set; }
     public DbSet<Models.Instance> Instances { get; set; }
@@ -47,12 +47,12 @@ public class GalaxyMapContext : DbContext
             .HasMany(o => o.ChildOrganizationRelationships)
             .WithOne(o => o.Parent);
         #endregion Organization Relationships
-        #region Planet-Government Relationships
+        #region OrbitingBody-Government Relationships
         modelBuilder
-            .Entity<Models.Planet>()
+            .Entity<Models.OrbitingBody>()
             .HasMany(p => p.Governments)
-            .WithMany(g => g.Planets)
-            .UsingEntity<Models.PlanetGovernment>(
+            .WithMany(g => g.OrbitingBodies)
+            .UsingEntity<Models.OrbitingBodyGovernment>(
                 j =>
                     j.HasOne(pg => pg.Parent)
                         .WithMany()
@@ -63,7 +63,7 @@ public class GalaxyMapContext : DbContext
                         .HasForeignKey(pg => new { pg.InstanceId, pg.ChildId }),
                 j =>
                 {
-                    j.ToTable("planet_governments");
+                    j.ToTable("orbiting_body_governments");
                     j.HasKey(pg => new
                     {
                         pg.InstanceId,
@@ -72,6 +72,6 @@ public class GalaxyMapContext : DbContext
                     });
                 }
             );
-        #endregion Planet-Government Relationships
+        #endregion OrbitingBody-Government Relationships
     }
 }

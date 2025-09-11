@@ -12,13 +12,13 @@ public struct System
     #region Constructors
     public System(Models.System system)
     {
-        if (system.Planets.Count > 0)
+        if (system.OrbitingBodies.Count > 0)
         {
-            Planet primaryPlanet = system.Planets.First();
-            Name = primaryPlanet.Name;
+            OrbitingBody primaryBody = system.OrbitingBodies.First();
+            Name = primaryBody.Name;
             Color = Map.GetColorFromEnum(
-                primaryPlanet.CurrentGovernment is not null
-                    ? primaryPlanet.CurrentGovernment.GetGalacticGovernment()?.Color
+                primaryBody.CurrentGovernment is not null
+                    ? primaryBody.CurrentGovernment.GetGalacticGovernment()?.Color
                     : MapColor.Gray
             );
         }

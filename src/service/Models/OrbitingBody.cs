@@ -3,15 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GalaxyMapSiteApi.Models;
 
-[Table("planets")]
-public class Planet : InstanceEntity
+[Table("orbiting_bodies")]
+public class OrbitingBody : InstanceEntity
 {
     #region Properties
     public string Name { get; set; }
 
     [ForeignKey("InstanceId, SystemId")]
-    public virtual System System { get; set; } = null!;
-    public string SystemId { get; set; }
+    public virtual required System System { get; set; }
+    public required string SystemId { get; set; }
+    public OrbitingBodyType? Type { get; set; }
+
+    [ForeignKey("InstanceId, OrbitedBodyId")]
+    public virtual OrbitingBody? OrbitedBody { get; set; }
+    public string? OrbitedBodyId { get; set; }
     public virtual ICollection<Government> Governments { get; set; } = [];
 
     [NotMapped]
@@ -20,17 +25,4 @@ public class Planet : InstanceEntity
         get { return Governments.Count > 0 ? Governments.First() : null; }
     }
     #endregion Properties
-    #region Constructors
-    public Planet(string name, string systemId)
-    {
-        Name = name;
-        SystemId = systemId;
-    }
-    #endregion Constructors
-    #region Overrides
-    public override string ToString()
-    {
-        return $"{{Name: '{Name}', SystemId: '{SystemId}'}}";
-    }
-    #endregion Overrides
 }

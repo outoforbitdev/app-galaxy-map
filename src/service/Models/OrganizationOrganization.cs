@@ -15,8 +15,10 @@ public class OrganizationOrganization : InstanceRelationship<Organization, Organ
         get { return Relationship.ToString(); }
         set
         {
-            Relationship = (OrganizationRelationship)
-                Enum.Parse(typeof(OrganizationRelationship), value);
+            Relationship = EnumConverter.ConvertToEnumOrDefault<OrganizationRelationship>(
+                value,
+                OrganizationRelationship.Member
+            );
         }
     }
     #endregion Properties

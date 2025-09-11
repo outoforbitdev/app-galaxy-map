@@ -25,7 +25,7 @@ public class System : InstanceEntity
     public string? Sector { get; set; }
     public string? Region { get; set; }
     public FocusLevel? Focus { get; set; } = FocusLevel.Quaternary;
-    public virtual ICollection<Planet> Planets { get; } = [];
+    public virtual ICollection<OrbitingBody> OrbitingBodies { get; } = [];
     #endregion Properties
     /// <summary>
     /// Gets the government that currently controls this system.
@@ -35,7 +35,7 @@ public class System : InstanceEntity
     {
         // @TODO(jmirecki): This just gets the government of the first planet
         // in the system with a government. This should be updated to find the
-        // common government among all planets in the system.
-        return Planets.Select(p => p.CurrentGovernment).FirstOrDefault();
+        // common government among all orbiting bodies in the system.
+        return OrbitingBodies.Select(p => p.CurrentGovernment).FirstOrDefault();
     }
 }
