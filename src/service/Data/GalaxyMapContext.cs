@@ -24,6 +24,9 @@ public class GalaxyMapContext : DbContext
             .HaveConversion<EnumConverter<OrganizationType>>();
         configurationBuilder.Properties<MapColor>().HaveConversion<EnumConverter<MapColor>>();
         configurationBuilder.Properties<FocusLevel>().HaveConversion<EnumConverter<FocusLevel>>();
+        configurationBuilder
+            .Properties<OrganizationRelationship>()
+            .HaveConversion<EnumConverter<OrganizationRelationship>>();
     }
 
     public DbSet<Models.System> Systems { get; set; }

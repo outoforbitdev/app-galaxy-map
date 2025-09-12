@@ -12,9 +12,9 @@ public struct System
     #region Constructors
     public System(Models.System system)
     {
-        if (system.OrbitingBodies.Count > 0)
+        OrbitingBody? primaryBody = system.GetPrimaryOrbitingBody();
+        if (primaryBody != null)
         {
-            OrbitingBody primaryBody = system.OrbitingBodies.First();
             Name = primaryBody.Name;
             Color = Map.GetColorFromEnum(
                 primaryBody.CurrentGovernment is not null
