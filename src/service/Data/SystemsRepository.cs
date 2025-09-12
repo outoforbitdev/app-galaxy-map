@@ -12,20 +12,20 @@ public class SystemsRepository
         Systems = systems;
     }
 
-    public async Task<List<Models.System>> GetAllSystemsForInstanceWithPlanetGovernments(
+    public async Task<List<Models.System>> GetAllSystemsForInstanceWithOrbitingBodyGovernments(
         string instanceId
     )
     {
         return await Systems
             .Where(s => s.InstanceId == instanceId)
-            .Include(s => s.Planets)
+            .Include(s => s.OrbitingBodies)
             .ThenInclude(p => p.Governments)
             .ThenInclude(g => g.Organization)
             .ThenInclude(o => o.ParentOrganizations)
             .ToListAsync();
     }
 
-    public async Task<List<Models.System>> GetAllSystemsForInstanceDateWithPlanetGovernments(
+    public async Task<List<Models.System>> GetAllSystemsForInstanceDateWithOrbitingBodyGovernments(
         string instanceId,
         int date
     )
@@ -37,7 +37,7 @@ public class SystemsRepository
                 && (s.EndDate == null || s.EndDate > new Date(date))
             )
             .Include(s =>
-                s.Planets.Where(p =>
+                s.OrbitingBodies.Where(p =>
                     (p.StartDate == null || p.StartDate < new Date(date))
                     && (p.EndDate == null || p.EndDate > new Date(date))
                 )

@@ -15,8 +15,8 @@ PGPASSWORD=password $POSTGRES_COMMAND "COPY instances FROM '/data/db/instances.c
 copy_from_csv /data/db/solar-systems.csv solar_systems
 copy_from_csv /data/db/spacelanes.csv spacelanes
 copy_from_csv /data/db/spacelane-segments.csv spacelane_segments
-copy_from_csv /data/db/planets.csv planets
+copy_from_csv /data/db/planets.csv orbiting_bodies
 copy_from_csv /data/db/organizations.csv organizations
 copy_from_csv /data/db/governments.csv governments
-copy_from_csv /data/db/planet-governments.csv planet_governments
+copy_from_csv /data/db/planet-governments.csv orbiting_body_governments
 copy_from_csv /data/db/organization-organizations.csv organization_organizations

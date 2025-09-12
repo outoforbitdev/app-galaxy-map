@@ -12,7 +12,7 @@ public class Government : OrganizationEntity, IEquatable<Government>
 {
     #region Properties
     public MapColor? Color { get; set; } = MapColor.Gray;
-    public virtual ICollection<Planet> Planets { get; set; } = [];
+    public virtual ICollection<OrbitingBody> OrbitingBodies { get; set; } = [];
     #endregion Properties
     #region Constructors
     #endregion Constructors

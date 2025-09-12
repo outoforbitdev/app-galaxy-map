@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalaxyMapSiteApi.Models;
 
-public class PlanetGovernment : InstanceRelationship<Planet, Government>
+public class OrbitingBodyGovernment : InstanceRelationship<OrbitingBody, Government>
 {
     #region Properties
 
@@ -20,12 +20,4 @@ public class PlanetGovernment : InstanceRelationship<Planet, Government>
         }
     }
     #endregion Properties
-    #region Constructors
-    public PlanetGovernment(string childId, string parentId, string relationshipString)
-    {
-        ChildId = childId;
-        ParentId = parentId;
-        RelationshipString = relationshipString;
-    }
-    #endregion Constructors
 }

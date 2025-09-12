@@ -46,7 +46,10 @@ public class MapController : ControllerBase
             _context.SpacelaneSegments
         );
         List<Models.System> systems =
-            await systemsRepo.GetAllSystemsForInstanceDateWithPlanetGovernments(instanceId, date);
+            await systemsRepo.GetAllSystemsForInstanceDateWithOrbitingBodyGovernments(
+                instanceId,
+                date
+            );
         List<Models.SpacelaneSegment> spacelanes =
             await segmentsRepo.GetAllSpacelaneSegmentsForInstanceDateWithSpacelaneOriginDestination(
                 instanceId,
