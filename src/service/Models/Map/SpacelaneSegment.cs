@@ -38,9 +38,6 @@ public struct SpacelaneSegment
         {
             commonGov = originGov.GetCommonGovernment(destGov);
         }
-        Console.WriteLine(
-            $"Origin system: {spacelane.Origin?.Id}, Dest system: {spacelane.Destination?.Id}"
-        );
         Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment()?.Color);
     }
     #endregion Constructors

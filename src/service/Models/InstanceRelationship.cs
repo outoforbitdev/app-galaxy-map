@@ -12,7 +12,6 @@ namespace GalaxyMapSiteApi.Models;
     nameof(StartDate),
     nameof(Relationship)
 )]
-// [Keyless]
 public abstract class InstanceRelationship<ChildType, ParentType, RelationshipType>
     : IDatedInstanceItem
     where ChildType : InstanceEntity
