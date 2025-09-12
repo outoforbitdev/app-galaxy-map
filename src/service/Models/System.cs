@@ -36,6 +36,16 @@ public class System : InstanceEntity
         // @TODO(jmirecki): This just gets the government of the first planet
         // in the system with a government. This should be updated to find the
         // common government among all orbiting bodies in the system.
-        return OrbitingBodies.Select(p => p.CurrentGovernment).FirstOrDefault();
+        return GetPrimaryOrbitingBody()?.CurrentGovernment;
+    }
+
+    public OrbitingBody? GetPrimaryOrbitingBody()
+    {
+        OrbitingBody? primary = OrbitingBodies.FirstOrDefault(p => p.CurrentGovernment != null);
+        if (primary == null && OrbitingBodies.Count > 0)
+        {
+            primary = OrbitingBodies.First();
+        }
+        return primary;
     }
 }

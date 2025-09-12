@@ -25,7 +25,19 @@ public struct SpacelaneSegment
 
         Government? originGov = spacelane.Origin.GetGovernment();
         Government? destGov = spacelane.Destination.GetGovernment();
-        Government? commonGov = originGov?.GetCommonGovernment(destGov);
+        Government? commonGov;
+        if (destGov == null)
+        {
+            commonGov = originGov;
+        }
+        else if (originGov == null)
+        {
+            commonGov = destGov;
+        }
+        else
+        {
+            commonGov = originGov.GetCommonGovernment(destGov);
+        }
         Color = Map.GetColorFromEnum(commonGov?.GetGalacticGovernment()?.Color);
     }
     #endregion Constructors

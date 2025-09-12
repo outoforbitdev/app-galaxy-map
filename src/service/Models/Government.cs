@@ -42,16 +42,19 @@ public class Government : OrganizationEntity, IEquatable<Government>
             return this;
 
         Government? otherParent = other;
-        Government? thisParent = this;
+        Government? thisParent;
         // This loop is O(n^2). Perhaps we should short-circuit it by first
         // checking if the galactic government is the same for both
         // governments.
         while (otherParent is not null)
         {
+            thisParent = this;
             while (thisParent is not null)
             {
                 if (thisParent == otherParent)
+                {
                     return thisParent;
+                }
                 thisParent = thisParent.GetParentGovernment();
             }
             otherParent = otherParent.GetParentGovernment();
