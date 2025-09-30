@@ -4,6 +4,7 @@ import GalaxyMap from "@outoforbitdev/galaxy-map";
 import { Fragment, useEffect, useState } from "react";
 import DateSelect from "./DateSelect";
 import styles from "../app/page.module.css";
+import { Infobox, ISolarSystem } from "./Infobox";
 
 interface IMapPageProps {
   instanceId: string;
@@ -13,6 +14,12 @@ export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
   const [date, setDate] = useState(-7900);
+  const [selectedSystem, setSelectedSystem] = useState<ISolarSystem | null>(
+    null,
+  );
+  const clearSelection = () => {
+    setSelectedSystem(null);
+  };
 
   const fetchMap = async function () {
     const data = await fetch(
@@ -33,7 +40,16 @@ export default function MapPage(props: IMapPageProps) {
     fetchMap();
   }, [date]);
 
-  const customOptions = <DateSelect onChange={setDate} defaultValue={date} />;
+  const customOptions = (
+    <DateSelect
+      onChange={(date) => {
+        clearSelection();
+        setDate(date);
+      }}
+      defaultValue={date}
+    />
+  );
+  const hasSelection = selectedSystem !== null;
 
   return (
     <Fragment>
@@ -47,10 +63,31 @@ export default function MapPage(props: IMapPageProps) {
           customOptions: customOptions,
         }}
         className={styles.map_container}
-      />
+        onPlanetSelect={async (planet) => {
+          setSelectedSystem(await getSystem(props.instanceId, date, planet.id));
+        }}
+        selectedPlanetId={selectedSystem?.id || undefined}
+      >
+        {hasSelection ? (
+          <Infobox
+            clearSelection={clearSelection}
+            solarSystem={selectedSystem}
+          />
+        ) : null}
+      </GalaxyMap>
       <p>
         Star Wars and all associated names are copyright Lucasfilm and Disney.
       </p>
     </Fragment>
   );
+}
+
+async function getSystem(instanceId: string, date: number, systemId: string) {
+  const data = await fetch(
+    `/api/system?instanceId=${instanceId}&date=${date}&systemId=${systemId}`,
+  );
+  if (!data.ok) {
+    throw new Error("Failed to fetch system data");
+  }
+  return await data.json();
 }

@@ -10,6 +10,7 @@ public struct Map
     public Map(List<Models.System> systems, List<Models.SpacelaneSegment> spacelanes)
     {
         Systems = systems.ConvertAll(s => new System(s));
+        Systems.Sort((a, b) => b.FocusLevel.CompareTo(a.FocusLevel));
         Spacelanes = spacelanes.ConvertAll(s => new Models.Map.SpacelaneSegment(s));
     }
     #endregion Constructors

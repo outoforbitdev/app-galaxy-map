@@ -3,6 +3,7 @@ namespace GalaxyMapSiteApi.Models.Map;
 public struct System
 {
     #region Properties
+    public string Id { get; set; }
     public string Name { get; set; }
     public int X { get; set; }
     public int Y { get; set; }
@@ -12,6 +13,7 @@ public struct System
     #region Constructors
     public System(Models.System system)
     {
+        Id = system.Id;
         OrbitingBody? primaryBody = system.GetPrimaryOrbitingBody();
         if (primaryBody != null)
         {

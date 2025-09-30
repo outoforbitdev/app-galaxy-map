@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using GalaxyMapSiteApi.Data;
 using Microsoft.EntityFrameworkCore;
 
