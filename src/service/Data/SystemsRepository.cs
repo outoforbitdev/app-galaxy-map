@@ -61,7 +61,7 @@ public class SystemsRepository
             .ToListAsync();
     }
 
-    public async Task<Models.System> GetSystemForInstanceDateWithOrbitingBodyGovernments(
+    public async Task<Models.System?> GetSystemForInstanceDateWithOrbitingBodyGovernments(
         string instanceId,
         int date,
         string systemId

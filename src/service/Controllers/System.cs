@@ -28,12 +28,16 @@ public class SystemController : ControllerBase
         // Adjust the date to be in the middle of the year
         date += (368 / 2);
         Data.SystemsRepository systemsRepo = new Data.SystemsRepository(_context.Systems);
-        Models.System system =
+        Models.System? system =
             await systemsRepo.GetSystemForInstanceDateWithOrbitingBodyGovernments(
                 instanceId,
                 date,
                 systemId
             );
+        if (system == null)
+        {
+            return NotFound();
+        }
         return new Models.Info.System(system, new Date(date));
     }
 }

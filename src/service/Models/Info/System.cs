@@ -28,8 +28,8 @@ public struct System
             .ToList();
         X = system.Coordinates.X;
         Y = system.Coordinates.Y;
-        Sector = system.Sector;
-        Region = system.Region;
+        Sector = system.Sector ?? "";
+        Region = system.Region ?? "";
         Government = system.GetGovernment()?.GetGalacticGovernment()?.Name ?? "";
     }
     #endregion Constructors
