@@ -39,3 +39,12 @@ header.header {
 .map_container {
   flex-grow: 1;
 }
+
+.infobox_container {
+  float: right;
+}
+
+button.close_button {
+  float: right;
+  border: none;
+}

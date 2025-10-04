@@ -1,3 +1,8 @@
+## 1.4.0 (2025-10-04)
+
+### Features
+- Select a system to view additional information.
+
 ## 1.3.0 (2025-09-03)
 
 ### Features
