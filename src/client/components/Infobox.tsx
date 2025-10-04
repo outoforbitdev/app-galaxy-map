@@ -26,7 +26,6 @@ interface IInfoboxProps extends IChildlessComponentProps {
 }
 
 export function Infobox(props: IInfoboxProps) {
-  console.log(props.solarSystem);
   return (
     <div className={styles.infobox_container}>
       <GenericInfobox id={styles.infobox}>
@@ -59,14 +58,4 @@ export function Infobox(props: IInfoboxProps) {
       </GenericInfobox>
     </div>
   );
-}
-
-async function getSystem(instanceId: string, date: number, systemId: string) {
-  const data = await fetch(
-    `/api/system?instanceId=${instanceId}&date=${date}&systemId=${systemId}`,
-  );
-  if (!data.ok) {
-    throw new Error("Failed to fetch system data");
-  }
-  return await data.json();
 }

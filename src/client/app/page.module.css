@@ -44,11 +44,6 @@ header.header {
   float: right;
 }
 
-#infobox {
-  border-radius: 5px;
-  /* border: none; */
-}
-
 button.close_button {
   float: right;
   border: none;
