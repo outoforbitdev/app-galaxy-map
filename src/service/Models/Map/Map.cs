@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
 namespace GalaxyMapSiteApi.Models.Map;
 
 public struct Map
