@@ -13,6 +13,7 @@ interface IMapPageProps {
 export default function MapPage(props: IMapPageProps) {
   const [planets, setPlanets] = useState([]);
   const [spacelanes, setSpacelanes] = useState([]);
+  const [legendEntries, setLegendEntries] = useState([]);
   const [date, setDate] = useState(-7900);
   const [selectedSystem, setSelectedSystem] = useState<ISolarSystem | null>(
     null,
@@ -32,9 +33,11 @@ export default function MapPage(props: IMapPageProps) {
     const json_data = await data.json();
     const planet_list = json_data.systems;
     const spacelane_list = json_data.spacelanes;
+    const legend_entries = json_data.legend;
 
     setPlanets(planet_list);
     setSpacelanes(spacelane_list);
+    setLegendEntries(legend_entries);
   };
   useEffect(() => {
     fetchMap();
@@ -62,6 +65,7 @@ export default function MapPage(props: IMapPageProps) {
           planetVisibility: "show",
           customOptions: customOptions,
         }}
+        legendEntries={legendEntries}
         className={styles.map_container}
         onPlanetSelect={async (planet) => {
           setSelectedSystem(await getSystem(props.instanceId, date, planet.id));

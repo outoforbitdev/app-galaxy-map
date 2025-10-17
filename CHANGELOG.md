@@ -1,3 +1,8 @@
+## 1.5.0 (2025-10-17)
+
+### Features
+- Added a legend to the map.
+
 ## 1.4.0 (2025-10-04)
 
 ### Features

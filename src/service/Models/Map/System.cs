@@ -14,20 +14,23 @@ public struct System
     public System(Models.System system)
     {
         Id = system.Id;
+        Government? government = system.GetGovernment()?.GetGalacticGovernment();
+        if (government != null)
+        {
+            Color = Map.GetColorFromEnum(government.Color);
+        }
+        else
+        {
+            Color = Map.GetColorFromEnum(MapColor.Gray);
+        }
         OrbitingBody? primaryBody = system.GetPrimaryOrbitingBody();
         if (primaryBody != null)
         {
             Name = primaryBody.Name;
-            Color = Map.GetColorFromEnum(
-                primaryBody.CurrentGovernment is not null
-                    ? primaryBody.CurrentGovernment.GetGalacticGovernment()?.Color
-                    : MapColor.Gray
-            );
         }
         else
         {
             Name = system.Name;
-            Color = Map.GetColorFromEnum(MapColor.Gray);
         }
         X = system.Coordinates.X;
         Y = system.Coordinates.Y;
