@@ -20,9 +20,9 @@ public class SystemsRepository
         return await Systems
             .Where(s => s.InstanceId == instanceId)
             .Include(s => s.OrbitingBodies)
-            .ThenInclude(p => p.Governments)
-            .ThenInclude(g => g.Organization)
-            .ThenInclude(o => o.ParentOrganizations)
+                .ThenInclude(p => p.Governments)
+                    .ThenInclude(g => g.Organization)
+                        .ThenInclude(o => o.ParentOrganizations)
             .ToListAsync();
     }
 
@@ -43,21 +43,21 @@ public class SystemsRepository
                     && (p.EndDate == null || p.EndDate > new Date(date))
                 )
             )
-            .ThenInclude(p =>
-                p.Governments.Where(g =>
-                    (g.StartDate == null || g.StartDate < new Date(date))
-                    && (g.EndDate == null || g.EndDate > new Date(date))
+                .ThenInclude(p =>
+                    p.Governments.Where(g =>
+                        (g.StartDate == null || g.StartDate < new Date(date))
+                        && (g.EndDate == null || g.EndDate > new Date(date))
+                    )
                 )
-            )
-            .ThenInclude(g => g.Organization)
-            .ThenInclude(o =>
-                o.ParentOrganizationRelationships.Where(por =>
-                    (por.StartDate == null || por.StartDate < new Date(date))
-                    && (por.EndDate == null || por.EndDate > new Date(date))
-                    && por.Parent.OrganizationType == OrganizationType.Government
-                )
-            )
-            .ThenInclude(por => por.Parent)
+                    .ThenInclude(g => g.Organization)
+                        .ThenInclude(o =>
+                            o.ParentOrganizationRelationships.Where(por =>
+                                (por.StartDate == null || por.StartDate < new Date(date))
+                                && (por.EndDate == null || por.EndDate > new Date(date))
+                                && por.Parent.OrganizationType == OrganizationType.Government
+                            )
+                        )
+                            .ThenInclude(por => por.Parent)
             .ToListAsync();
     }
 
@@ -75,21 +75,21 @@ public class SystemsRepository
                     && (p.EndDate == null || p.EndDate > new Date(date))
                 )
             )
-            .ThenInclude(p =>
-                p.Governments.Where(g =>
-                    (g.StartDate == null || g.StartDate < new Date(date))
-                    && (g.EndDate == null || g.EndDate > new Date(date))
+                .ThenInclude(p =>
+                    p.Governments.Where(g =>
+                        (g.StartDate == null || g.StartDate < new Date(date))
+                        && (g.EndDate == null || g.EndDate > new Date(date))
+                    )
                 )
-            )
-            .ThenInclude(g => g.Organization)
-            .ThenInclude(o =>
-                o.ParentOrganizationRelationships.Where(por =>
-                    (por.StartDate == null || por.StartDate < new Date(date))
-                    && (por.EndDate == null || por.EndDate > new Date(date))
-                    && por.Parent.OrganizationType == OrganizationType.Government
-                )
-            )
-            .ThenInclude(por => por.Parent)
+                    .ThenInclude(g => g.Organization)
+                        .ThenInclude(o =>
+                            o.ParentOrganizationRelationships.Where(por =>
+                                (por.StartDate == null || por.StartDate < new Date(date))
+                                && (por.EndDate == null || por.EndDate > new Date(date))
+                                && por.Parent.OrganizationType == OrganizationType.Government
+                            )
+                        )
+                            .ThenInclude(por => por.Parent)
             .ToListAsync();
         return systems.Count > 0 ? systems[0] : null;
     }
