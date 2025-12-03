@@ -1,5 +1,5 @@
-# dotnet/sdk:9.0.202 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk@sha256:d7f4691d11f610d9b94bb75517c9e78ac5799447b5b3e82af9e4625d8c8d1d53 AS build-service
+# dotnet/sdk:10.0.100 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+FROM mcr.microsoft.com/dotnet/sdk@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS build-service
 WORKDIR /app
 
 COPY ./src/service .
@@ -8,8 +8,8 @@ RUN dotnet restore
 WORKDIR /app
 RUN dotnet publish -c release -o /out --no-restore
 
-# dotnet/sdk:9.0.202 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk@sha256:d7f4691d11f610d9b94bb75517c9e78ac5799447b5b3e82af9e4625d8c8d1d53 AS build-client
+# dotnet/sdk:10.0.100 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+FROM mcr.microsoft.com/dotnet/sdk@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS build-client
 WORKDIR /app
 
 RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
@@ -21,8 +21,8 @@ RUN npm install
 COPY ./src/client .
 RUN npm run build
 
-# dotnet/aspnet:9.0.3 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags
-FROM mcr.microsoft.com/dotnet/aspnet@sha256:4f0ad314f83e6abeb6906e69d0f9c81a0d2ee51d362e035c7d3e6ac5743f5399 AS runtime
+# dotnet/aspnet:10.0.0 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags
+FROM mcr.microsoft.com/dotnet/aspnet@sha256:7c4246c1c384319346d45b3e24a10a21d5b6fc9b36a04790e1588148ff8055b0 AS runtime
 WORKDIR /app
 
 RUN apt-get update -y
