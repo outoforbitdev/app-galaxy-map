@@ -1,5 +1,5 @@
 # dotnet/sdk:10.0.100 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS build-service
+FROM mcr.microsoft.com/dotnet/sdk@sha256:e362a8dbcd691522456da26a5198b8f3ca1d7641c95624fadc5e3e82678bd08a AS build-service
 WORKDIR /app
 RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
 && apt-get install -y nodejs
