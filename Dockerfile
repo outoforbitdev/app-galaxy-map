@@ -22,7 +22,7 @@ COPY ./src/client .
 RUN npm run build
 
 # dotnet/aspnet:10.0.0 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags
-FROM mcr.microsoft.com/dotnet/aspnet@sha256:7c4246c1c384319346d45b3e24a10a21d5b6fc9b36a04790e1588148ff8055b0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet@sha256:c433886fdfe33c6427966a412328867b2be9a64f540a105d08943c2dc6fba39b AS runtime
 WORKDIR /app
 
 RUN apt-get update -y
