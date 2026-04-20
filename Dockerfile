@@ -1,5 +1,5 @@
 # dotnet/sdk:10.0.100 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS build-service
+FROM mcr.microsoft.com/dotnet/sdk@sha256:adc02be8b87957d07208a4a3e51775935b33bad3317de8c45b1e67357b4c073b AS build-service
 WORKDIR /app
 
 COPY ./src/service .
@@ -9,7 +9,7 @@ WORKDIR /app
 RUN dotnet publish -c release -o /out --no-restore
 
 # dotnet/sdk:10.0.100 https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS build-client
+FROM mcr.microsoft.com/dotnet/sdk@sha256:adc02be8b87957d07208a4a3e51775935b33bad3317de8c45b1e67357b4c073b AS build-client
 WORKDIR /app
 
 RUN curl --silent --location https://deb.nodesource.com/setup_22.x | bash - \
