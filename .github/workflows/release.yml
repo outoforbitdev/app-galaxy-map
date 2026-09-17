@@ -44,7 +44,7 @@ jobs:
       prerelease: ${{ needs.detect.outputs.is-prerelease == 'true' }}
       release-notes: ${{ needs.detect.outputs.release-notes }}
 
-  docker-publish:
+  docker-publish-docker-hub:
     needs: [detect, release-publish]
     if: needs.detect.outputs.should-release == 'true'
     permissions:
@@ -60,3 +60,20 @@ jobs:
     secrets:
       docker-username: ${{ vars.DOCKER_USERNAME }}
       docker-token: ${{ secrets.DOCKER_TOKEN }}
+
+  docker-publish-ghcr:
+    needs: [detect, release-publish]
+    if: needs.detect.outputs.should-release == 'true'
+    permissions:
+      contents: read
+      packages: write
+    # yamllint disable-line rule:line-length
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/publish-docker.yml@6d3deb76a8bc67b0c56bfae3e58d9b9566a967d0 # v1.3.0
+    with:
+      registry: ghcr
+      image-name: ${{ vars.IMAGE_NAME }}
+      image-tag: ${{ needs.detect.outputs.new-version }}
+      platforms: "linux/amd64"
+      publish-latest: true
+    secrets:
+      registry-token: ${{ secrets.GITHUB_TOKEN }}
