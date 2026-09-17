@@ -2,12 +2,12 @@ app_name := "app-galaxy-map"
 port := "1798"
 api_port := "1799"
 
+# Bootstrap: one-time repository initialization
+bootstrap:
+    pre-commit install
+
 install:
     npm install
-    npx husky install
-    npx husky init
-    echo "npx commitlint --edit \$1 --config ./.linters/config/commitlint.config.js" > .husky/commit-msg
-    echo "just lint" > .husky/pre-commit
     cd src/client && npm install
 
 run: stop
@@ -62,3 +62,5 @@ migrate NAME:
 
 test:
     cd src/serviceTests && dotnet test
+
+gate: test lint
