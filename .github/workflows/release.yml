@@ -1,26 +1,79 @@
 name: Release App
+
 permissions: read-all
+
 on:
   push:
     branches:
       - main
-      - beta
-      - dev
-      - staging
+
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    name: Create Github Release
+  detect:
     permissions:
       contents: write
+    # yamllint disable-line rule:line-length
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/detect-new-changelog-version.yml@6d3deb76a8bc67b0c56bfae3e58d9b9566a967d0 # v1.3.0
+
+  build-image:
+    needs: detect
+    if: needs.detect.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+    name: Build Docker Image
+    permissions:
+      contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Create Release
-        uses: outoforbitdev/action-release-changelog@v0.0.11
-        id: semantic-release
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+      # Sanity-build only; docker-publish job does the real build-and-push.
+      - name: Build
+        run: docker build --platform linux/amd64 .
+
+  release-publish:
+    needs: [detect, build-image]
+    if: needs.detect.outputs.should-release == 'true'
+    permissions:
+      contents: write
+    # yamllint disable-line rule:line-length
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/publish-release.yml@6d3deb76a8bc67b0c56bfae3e58d9b9566a967d0 # v1.3.0
+    with:
+      version: ${{ needs.detect.outputs.new-version }}
+      draft: false
+      prerelease: ${{ needs.detect.outputs.is-prerelease == 'true' }}
+      release-notes: ${{ needs.detect.outputs.release-notes }}
+
+  docker-publish-docker-hub:
+    needs: [detect, release-publish]
+    if: needs.detect.outputs.should-release == 'true'
+    permissions:
+      contents: read
+    # yamllint disable-line rule:line-length
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/publish-docker.yml@6d3deb76a8bc67b0c56bfae3e58d9b9566a967d0 # v1.3.0
+    with:
+      registry: docker-hub
+      image-name: ${{ vars.IMAGE_NAME }}
+      image-tag: ${{ needs.detect.outputs.new-version }}
+      platforms: "linux/amd64"
+      publish-latest: true
+    secrets:
+      docker-username: ${{ vars.DOCKER_USERNAME }}
+      docker-token: ${{ secrets.DOCKER_TOKEN }}
+
+  docker-publish-ghcr:
+    needs: [detect, release-publish]
+    if: needs.detect.outputs.should-release == 'true'
+    permissions:
+      contents: read
+      packages: write
+    # yamllint disable-line rule:line-length
+    uses: outoforbitdev/reusable-workflows-library/.github/workflows/publish-docker.yml@6d3deb76a8bc67b0c56bfae3e58d9b9566a967d0 # v1.3.0
+    with:
+      registry: ghcr
+      image-name: ${{ vars.IMAGE_NAME }}
+      image-tag: ${{ needs.detect.outputs.new-version }}
+      platforms: "linux/amd64"
+      publish-latest: true
+    secrets:
+      registry-token: ${{ secrets.GITHUB_TOKEN }}
