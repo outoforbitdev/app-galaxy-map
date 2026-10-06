@@ -2,9 +2,6 @@
   "name": "app-galaxy-map",
   "description": "",
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "commitlint": "^20.1.0",
     "prettier": "^3.6.2"
   },
   "bugs": {
