@@ -5,6 +5,7 @@ import {
   type ISpacelane,
   type ISystem,
 } from "@outoforbitdev/galaxy-map";
+import { Expandable } from "@outoforbitdev/ood-react";
 import { Fragment, useEffect, useState } from "react";
 import DateSelect from "./DateSelect";
 import styles from "../app/page.module.css";
@@ -122,24 +123,36 @@ export default function MapPage(props: IMapPageProps) {
             }}
           />
         </div>
-        <div className={styles.map_options}>
-          <DateSelect
-            onChange={(date) => {
-              clearSelection();
-              setDate(date);
-            }}
-            defaultValue={date}
-          />
-          <Legend entries={legendEntries} />
+        <div className={styles.map_legend}>
+          <Expandable
+            title="Legend"
+            titleAlwaysVisible
+            className={`${styles.map_panel} ood-accent-block`}
+          >
+            <Legend entries={legendEntries} />
+          </Expandable>
         </div>
-        {hasSelection ? (
-          <div className={styles.infobox_container}>
+        <div className={styles.map_right}>
+          <Expandable
+            title="Map Options"
+            titleAlwaysVisible
+            className={`${styles.map_panel} ood-accent-block`}
+          >
+            <DateSelect
+              onChange={(date) => {
+                clearSelection();
+                setDate(date);
+              }}
+              defaultValue={date}
+            />
+          </Expandable>
+          {hasSelection ? (
             <Infobox
               clearSelection={clearSelection}
               solarSystem={selectedSystem}
             />
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
       <p>
         Star Wars and all associated names are copyright Lucasfilm and Disney.
