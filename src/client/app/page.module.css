@@ -38,10 +38,35 @@ header.header {
 
 .map_container {
   flex-grow: 1;
+  position: relative;
+  min-height: 400px;
+}
+
+.map_canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.map_options {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.legend {
+  list-style: none;
+  padding: 0;
+}
+
+.legend svg {
+  vertical-align: middle;
+  margin-right: 6px;
 }
 
 .infobox_container {
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 button.close_button {
