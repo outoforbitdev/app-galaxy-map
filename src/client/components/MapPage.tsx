@@ -1,19 +1,77 @@
 "use client";
 
-import GalaxyMap from "@outoforbitdev/galaxy-map";
+import {
+  GalaxyMap,
+  type ISpacelane,
+  type ISystem,
+} from "@outoforbitdev/galaxy-map";
+import { Expandable } from "@outoforbitdev/ood-react";
 import { Fragment, useEffect, useState } from "react";
 import DateSelect from "./DateSelect";
 import styles from "../app/page.module.css";
 import { Infobox, ISolarSystem } from "./Infobox";
+import { ILegendEntry, Legend } from "./Legend";
+import { toCssColor } from "./mapColors";
+
+/** A system as returned by the map API. */
+interface IApiSystem {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  color: string;
+}
+
+/** A spacelane segment as returned by the map API. */
+interface IApiSegment {
+  name: string;
+  xOne: number;
+  yOne: number;
+  xTwo: number;
+  yTwo: number;
+  color: string;
+}
+
+/** Converts API systems to map systems, keeping the API's priority order. */
+function toSystems(systems: IApiSystem[]): ISystem[] {
+  return systems.map((s) => ({
+    id: s.id,
+    name: s.name,
+    position: { x: s.x, y: s.y },
+    color: toCssColor(s.color),
+  }));
+}
+
+/** Converts API segments to single-segment lanes, keeping priority order. */
+function toSpacelanes(segments: IApiSegment[]): ISpacelane[] {
+  return segments.map((s, i) => ({
+    id: `lane-${i}`,
+    name: s.name,
+    segments: [
+      {
+        id: `lane-${i}-0`,
+        origin: { x: s.xOne, y: s.yOne },
+        destination: { x: s.xTwo, y: s.yTwo },
+        color: toCssColor(s.color),
+      },
+    ],
+  }));
+}
+
+/** The area the galaxy occupies, used as the map's pan bounds. */
+const GALAXY_BOUNDS = {
+  min: { x: -12000, y: -12000 },
+  max: { x: 12000, y: 12000 },
+};
 
 interface IMapPageProps {
   instanceId: string;
 }
 
 export default function MapPage(props: IMapPageProps) {
-  const [planets, setPlanets] = useState([]);
-  const [spacelanes, setSpacelanes] = useState([]);
-  const [legendEntries, setLegendEntries] = useState([]);
+  const [systems, setSystems] = useState<ISystem[]>([]);
+  const [spacelanes, setSpacelanes] = useState<ISpacelane[]>([]);
+  const [legendEntries, setLegendEntries] = useState<ILegendEntry[]>([]);
   const [date, setDate] = useState(-7900);
   const [selectedSystem, setSelectedSystem] = useState<ISolarSystem | null>(
     null,
@@ -31,54 +89,71 @@ export default function MapPage(props: IMapPageProps) {
       return;
     }
     const json_data = await data.json();
-    const planet_list = json_data.systems;
-    const spacelane_list = json_data.spacelanes;
-    const legend_entries = json_data.legend;
-
-    setPlanets(planet_list);
-    setSpacelanes(spacelane_list);
-    setLegendEntries(legend_entries);
+    setSystems(toSystems(json_data.systems));
+    setSpacelanes(toSpacelanes(json_data.spacelanes));
+    setLegendEntries(json_data.legend);
   };
   useEffect(() => {
     fetchMap();
   }, [date]);
 
-  const customOptions = (
-    <DateSelect
-      onChange={(date) => {
-        clearSelection();
-        setDate(date);
-      }}
-      defaultValue={date}
-    />
-  );
   const hasSelection = selectedSystem !== null;
 
   return (
     <Fragment>
-      <GalaxyMap
-        planets={planets}
-        spacelanes={spacelanes}
-        dimensions={{ minX: -12000, maxX: 12000, minY: -12000, maxY: 12000 }}
-        zoom={{ initial: 0.5, min: 0.25, max: 10 }}
-        mapOptions={{
-          planetVisibility: "show",
-          customOptions: customOptions,
-        }}
-        legendEntries={legendEntries}
-        className={styles.map_container}
-        onPlanetSelect={async (planet) => {
-          setSelectedSystem(await getSystem(props.instanceId, date, planet.id));
-        }}
-        selectedPlanetId={selectedSystem?.id || undefined}
-      >
-        {hasSelection ? (
-          <Infobox
-            clearSelection={clearSelection}
-            solarSystem={selectedSystem}
+      <div className={styles.map_container}>
+        <div className={styles.map_canvas}>
+          <GalaxyMap
+            systems={systems}
+            spacelanes={spacelanes}
+            bounds={GALAXY_BOUNDS}
+            minZoom={0.01}
+            maxZoom={0.5}
+            selected={
+              selectedSystem ? { kind: "system", id: selectedSystem.id } : null
+            }
+            onSelect={async (event) => {
+              if (event?.kind === "system") {
+                setSelectedSystem(
+                  await getSystem(props.instanceId, date, event.system.id),
+                );
+              } else {
+                clearSelection();
+              }
+            }}
           />
-        ) : null}
-      </GalaxyMap>
+        </div>
+        <div className={styles.map_legend}>
+          <Expandable
+            title="Legend"
+            titleAlwaysVisible
+            className={`${styles.map_panel} ood-accent-block`}
+          >
+            <Legend entries={legendEntries} />
+          </Expandable>
+        </div>
+        <div className={styles.map_right}>
+          <Expandable
+            title="Map Options"
+            titleAlwaysVisible
+            className={`${styles.map_panel} ood-accent-block`}
+          >
+            <DateSelect
+              onChange={(date) => {
+                clearSelection();
+                setDate(date);
+              }}
+              defaultValue={date}
+            />
+          </Expandable>
+          {hasSelection ? (
+            <Infobox
+              clearSelection={clearSelection}
+              solarSystem={selectedSystem}
+            />
+          ) : null}
+        </div>
+      </div>
       <p>
         Star Wars and all associated names are copyright Lucasfilm and Disney.
       </p>
