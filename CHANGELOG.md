@@ -1,3 +1,10 @@
+## 1.6.0 (2026-10-16)
+
+### Features
+
+- Upgraded the map to galaxy-map 0.2.0, a rebuilt map with updated pan and zoom behavior.
+- The legend and date option now appear in collapsible panels over the map, with the date option on the right.
+
 ## 1.5.0 (2025-10-17)
 
 ### Features
