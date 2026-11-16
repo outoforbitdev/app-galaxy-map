@@ -9,14 +9,18 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
-      - "type: chore"
+      - "type: ci"
       - "work: obvious"
       - "effort: 1"
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of Dockerfile
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
       - "type: chore"
       - "work: obvious"
@@ -25,6 +29,8 @@ updates:
     directory: "/.local" # Location of Dockerfile
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
       - "type: chore"
       - "work: obvious"
@@ -33,6 +39,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
       - "type: chore"
       - "work: obvious"
@@ -41,6 +49,8 @@ updates:
     directory: "/src/client"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
       - "type: chore"
       - "work: obvious"
@@ -49,6 +59,8 @@ updates:
     directory: "/src/service"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "02:00"
     labels:
       - "type: chore"
       - "work: obvious"
